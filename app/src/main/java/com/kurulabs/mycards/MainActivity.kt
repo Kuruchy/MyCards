@@ -1,10 +1,14 @@
 package com.kurulabs.mycards
 
 import Action
+import ActionTitle
 import Card
+import android.content.Context
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.viewModels
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -22,46 +26,38 @@ import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.kurulabs.mycards.demo.getDemoCards
 import com.kurulabs.mycards.ui.theme.MyCardsTheme
 
 class MainActivity : ComponentActivity() {
+
+    private val viewModel: CardViewModel by viewModels()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             MyCardsTheme {
                 Surface(
                     modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colors.background
+                    color = MaterialTheme.colors.background,
                 ) {
-                    DefaultPreview()
+                    DefaultPreview(viewModel, this)
                 }
             }
         }
     }
 }
 
-
-@Preview(showBackground = true)
 @Composable
-fun DefaultPreview() {
+fun DefaultPreview(viewModel: CardViewModel, context: Context) {
     MyCardsTheme {
-        val cards = remember {
-            mutableStateOf(getDemoCards())
-        }
-        val actions = remember {
-            mutableStateOf(cards.value[0].actions)
-        }
+        val cards = viewModel.cards
         val rowState = rememberLazyListState()
 
         Column(
             modifier = Modifier.fillMaxWidth(),
-            verticalArrangement = Arrangement.Top
+            verticalArrangement = Arrangement.Top,
         ) {
 
             LazyRow(
@@ -70,12 +66,11 @@ fun DefaultPreview() {
                     .wrapContentHeight()
                     .padding(vertical = 8.dp)
                     .background(color = MaterialTheme.colors.background),
-                state = rowState
+                state = rowState,
             ) {
                 items(
                     items = cards.value,
                     itemContent = { item ->
-                        actions.value = item.actions
                         Card(modifier = Modifier.width(400.dp), cardData = item)
                     }
                 )
@@ -86,14 +81,19 @@ fun DefaultPreview() {
                     .fillMaxHeight()
                     .wrapContentWidth()
                     .padding(horizontal = 8.dp)
-                    .background(color = MaterialTheme.colors.background)
+                    .background(color = MaterialTheme.colors.background),
             ) {
-                items(
-                    items = actions.value,
-                    itemContent = { item ->
-                        Action(modifier = Modifier, cardActionItem = item)
+                val actions = cards.value[rowState.firstVisibleItemIndex].actions
+                actions.groupBy { it.groupTitle.index }.forEach { (_, actions) ->
+                    item {
+                        ActionTitle(modifier = Modifier, actions.first().groupTitle)
                     }
-                )
+                    items(actions) { action ->
+                        Action(cardAction = action) {
+                            Toast.makeText(context, action.name, Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                }
             }
         }
     }

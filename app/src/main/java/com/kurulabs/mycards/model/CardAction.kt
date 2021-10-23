@@ -2,56 +2,70 @@ package com.kurulabs.mycards.model
 
 import androidx.annotation.DrawableRes
 import com.kurulabs.mycards.R
+import com.kurulabs.mycards.model.CardActionItem.GroupTitle.CardGroupTitle
+import com.kurulabs.mycards.model.CardActionItem.GroupTitle.PayGroupTitle
+import com.kurulabs.mycards.model.CardActionItem.GroupTitle.PinGroupTitle
 
 sealed class CardActionItem {
     open class GroupTitle(
+        val index: Int,
         val title: String
     ) : CardActionItem() {
-        object PayTitle : GroupTitle("Payment")
-        object CardTitle : GroupTitle("Card Management")
-        object PinTitle : GroupTitle("PIN Management")
+
+        object PayGroupTitle : GroupTitle(index = 0, title = "Payment")
+
+        object CardGroupTitle : GroupTitle(index = 1, title = "Card Management")
+
+        object PinGroupTitle : GroupTitle(index = 2, title = "PIN Management")
     }
 
     open class CardAction(
-        val title: String,
-        val subtitle: String,
-        @DrawableRes val icon: Int
+        val name: String,
+        val description: String,
+        @DrawableRes val icon: Int,
+        val groupTitle: GroupTitle,
     ) : CardActionItem() {
 
         object GooglePay : CardAction(
-            title = "Google Pay",
-            subtitle = "Configure your Google Pay",
-            icon = R.drawable.ic_contactless
-        )
-
-        object ActivateCard : CardAction(
-            title = "Activate Card",
-            subtitle = "New Card? Activate it here",
-            icon = R.drawable.ic_credit_score
-        )
-
-        object OrderCard : CardAction(
-            title = "Order Card",
-            subtitle = "Order a replacement of this card",
-            icon = R.drawable.ic_credit_card
-        )
-
-        object CancelCard : CardAction(
-            title = "Cancel Card",
-            subtitle = "Did you loose your card? Cancel it here",
-            icon = R.drawable.ic_credit_card_off
+            name = "Google Pay",
+            description = "Configure your Google Pay",
+            icon = R.drawable.ic_contactless,
+            groupTitle = PayGroupTitle,
         )
 
         object CardLimits : CardAction(
-            title = "Card Limits",
-            subtitle = "Change the Weekly and Daily Limit",
-            icon = R.drawable.ic_attach_money
+            name = "Card Limits",
+            description = "Change the Weekly and Daily Limit",
+            icon = R.drawable.ic_attach_money,
+            groupTitle = PayGroupTitle,
+        )
+
+        object ActivateCard : CardAction(
+            name = "Activate Card",
+            description = "New Card? Activate it here",
+            icon = R.drawable.ic_credit_score,
+            groupTitle = CardGroupTitle,
+        )
+
+        object OrderCard : CardAction(
+            name = "Order Card",
+            description = "Order a replacement of this card",
+            icon = R.drawable.ic_credit_card,
+            groupTitle = CardGroupTitle,
+        )
+
+        object CancelCard : CardAction(
+            name = "Cancel Card",
+            description = "Did you loose your card? Cancel it here",
+            icon = R.drawable.ic_credit_card_off,
+            groupTitle = CardGroupTitle,
         )
 
         object PinChange : CardAction(
-            title = "Change Pin",
-            subtitle = "Have you forgotten your pin? Change it here",
-            icon = R.drawable.ic_pin
+            name = "Change Pin",
+            description = "Have you forgotten your pin? Change it here",
+            icon = R.drawable.ic_pin,
+            groupTitle = PinGroupTitle,
         )
     }
 }

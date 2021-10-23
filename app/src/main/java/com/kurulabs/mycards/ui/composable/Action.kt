@@ -1,25 +1,21 @@
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
-import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
-import com.kurulabs.mycards.demo.demoVisaActions
-import com.kurulabs.mycards.model.CardActionItem
 import com.kurulabs.mycards.model.CardActionItem.CardAction
-import com.kurulabs.mycards.model.CardActionItem.GroupTitle
+import com.kurulabs.mycards.model.CardActionItem.CardAction.GooglePay
 import com.kurulabs.mycards.ui.theme.MyCardsTheme
 import com.kurulabs.mycards.ui.theme.typography
 
@@ -27,39 +23,23 @@ import com.kurulabs.mycards.ui.theme.typography
 @Composable
 fun ActionPreview() {
     MyCardsTheme {
-        Action(Modifier, demoVisaActions.last())
+        Action(Modifier, GooglePay) {}
     }
 }
 
 @Composable
 internal fun Action(
     modifier: Modifier = Modifier,
-    cardActionItem: CardActionItem
+    cardAction: CardAction,
+    onClickAction: (CardAction) -> Unit
 ) {
-    when (cardActionItem) {
-        is GroupTitle -> Title(modifier = modifier, cardTitle = cardActionItem)
-        is CardAction -> Action(modifier = modifier, cardAction = cardActionItem)
-    }
-}
-
-@Composable
-private fun Title(modifier: Modifier, cardTitle: GroupTitle) {
-    Text(
-        modifier = modifier
-            .fillMaxWidth()
-            .padding(horizontal = 8.dp)
-            .padding(vertical = 16.dp),
-        text = cardTitle.title,
-        style = typography.h2
-    )
-}
-
-@Composable
-private fun Action(modifier: Modifier, cardAction: CardAction) {
     Row(
         modifier = modifier
             .fillMaxWidth()
             .wrapContentHeight()
+            .clickable {
+                onClickAction(cardAction)
+            }
     ) {
         Image(
             modifier = modifier
@@ -82,7 +62,7 @@ private fun Action(modifier: Modifier, cardAction: CardAction) {
                 modifier = modifier
                     .fillMaxWidth()
                     .padding(top = 8.dp),
-                text = cardAction.title,
+                text = cardAction.name,
                 style = typography.body1
             )
 
@@ -91,7 +71,7 @@ private fun Action(modifier: Modifier, cardAction: CardAction) {
                     .fillMaxWidth()
                     .padding(top = 2.dp)
                     .padding(bottom = 8.dp),
-                text = cardAction.subtitle,
+                text = cardAction.description,
                 style = typography.subtitle1
             )
         }

@@ -1,9 +1,11 @@
 package com.kurulabs.mycards.model
 
-internal data class CardData(
+import com.kurulabs.mycards.model.CardActionItem.CardAction
+
+data class CardData(
     val typeName: String,
     val maskedNumber: String,
     val owner: String,
     val icon: CardIcon,
-    val actions: List<CardActionItem>
+    val actions: List<CardAction>
 )

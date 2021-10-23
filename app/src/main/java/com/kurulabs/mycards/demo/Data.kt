@@ -1,38 +1,28 @@
 package com.kurulabs.mycards.demo
 
-import com.kurulabs.mycards.model.CardActionItem
 import com.kurulabs.mycards.model.CardActionItem.CardAction.ActivateCard
 import com.kurulabs.mycards.model.CardActionItem.CardAction.CancelCard
 import com.kurulabs.mycards.model.CardActionItem.CardAction.CardLimits
 import com.kurulabs.mycards.model.CardActionItem.CardAction.GooglePay
 import com.kurulabs.mycards.model.CardActionItem.CardAction.OrderCard
 import com.kurulabs.mycards.model.CardActionItem.CardAction.PinChange
-import com.kurulabs.mycards.model.CardActionItem.GroupTitle.CardTitle
-import com.kurulabs.mycards.model.CardActionItem.GroupTitle.PayTitle
-import com.kurulabs.mycards.model.CardActionItem.GroupTitle.PinTitle
 import com.kurulabs.mycards.model.CardData
 import com.kurulabs.mycards.model.CardIcon.GiroIcon
 import com.kurulabs.mycards.model.CardIcon.VisaIcon
 
-internal val demoVisaActions = listOf(
-    PayTitle,
+private val demoVisaActions = listOf(
     GooglePay,
     CardLimits,
-    CardTitle,
     ActivateCard,
     OrderCard,
     CancelCard,
-    PinTitle,
     PinChange,
 )
 
-internal val demoGiroActions = listOf(
-    PayTitle,
+private val demoGiroActions = listOf(
     CardLimits,
-    CardTitle,
     OrderCard,
     CancelCard,
-    PinTitle,
     PinChange,
 )
 
@@ -43,6 +33,7 @@ private val demoGiro = CardData(
     icon = GiroIcon,
     actions = demoGiroActions
 )
+
 private val demoVisa = CardData(
     typeName = "VISA Card",
     maskedNumber = "xxxx xxxx xxxx 4444",
@@ -51,7 +42,7 @@ private val demoVisa = CardData(
     actions = demoVisaActions
 )
 
-internal fun getDemoCards(): List<CardData> = listOf(
+fun getDemoCards(): List<CardData> = listOf(
     demoGiro,
     demoVisa
 )
