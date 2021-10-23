@@ -64,6 +64,7 @@ internal fun Card(modifier: Modifier = Modifier, cardData: CardData) {
             modifier = modifier
                 .fillMaxWidth()
                 .padding(horizontal = 8.dp)
+                .padding(top = 8.dp)
                 .padding(bottom = 16.dp),
             text = cardData.maskedNumber,
             color = MaterialTheme.colors.onBackground.copy(alpha = 0.3f),
