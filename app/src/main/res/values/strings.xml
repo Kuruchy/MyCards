@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">My Cards</string>
+
+    <!-- Navigation -->
+    <string name="navigation_cards">Cards</string>
+    <string name="navigation_about">About</string>
 </resources>

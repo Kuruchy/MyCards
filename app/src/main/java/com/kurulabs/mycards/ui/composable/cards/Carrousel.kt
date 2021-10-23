@@ -1,4 +1,4 @@
-package com.kurulabs.mycards.ui.composable
+package com.kurulabs.mycards.ui.composable.cards
 
 import Card
 import androidx.compose.foundation.background

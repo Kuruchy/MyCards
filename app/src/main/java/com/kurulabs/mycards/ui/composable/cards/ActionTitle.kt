@@ -5,8 +5,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.kurulabs.mycards.model.CardActionItem.GroupTitle
-import com.kurulabs.mycards.model.CardActionItem.GroupTitle.PayGroupTitle
+import com.kurulabs.mycards.model.cards.CardActionItem.GroupTitle
+import com.kurulabs.mycards.model.cards.CardActionItem.GroupTitle.PayGroupTitle
 import com.kurulabs.mycards.ui.theme.MyCardsTheme
 import com.kurulabs.mycards.ui.theme.typography
 

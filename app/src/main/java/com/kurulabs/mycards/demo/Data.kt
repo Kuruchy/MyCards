@@ -1,14 +1,14 @@
 package com.kurulabs.mycards.demo
 
-import com.kurulabs.mycards.model.CardActionItem.CardAction.ActivateCard
-import com.kurulabs.mycards.model.CardActionItem.CardAction.CancelCard
-import com.kurulabs.mycards.model.CardActionItem.CardAction.CardLimits
-import com.kurulabs.mycards.model.CardActionItem.CardAction.GooglePay
-import com.kurulabs.mycards.model.CardActionItem.CardAction.OrderCard
-import com.kurulabs.mycards.model.CardActionItem.CardAction.PinChange
-import com.kurulabs.mycards.model.CardData
-import com.kurulabs.mycards.model.CardIcon.GiroIcon
-import com.kurulabs.mycards.model.CardIcon.VisaIcon
+import com.kurulabs.mycards.model.cards.CardActionItem.CardAction.ActivateCard
+import com.kurulabs.mycards.model.cards.CardActionItem.CardAction.CancelCard
+import com.kurulabs.mycards.model.cards.CardActionItem.CardAction.CardLimits
+import com.kurulabs.mycards.model.cards.CardActionItem.CardAction.GooglePay
+import com.kurulabs.mycards.model.cards.CardActionItem.CardAction.OrderCard
+import com.kurulabs.mycards.model.cards.CardActionItem.CardAction.PinChange
+import com.kurulabs.mycards.model.cards.CardData
+import com.kurulabs.mycards.model.cards.CardIcon.GiroIcon
+import com.kurulabs.mycards.model.cards.CardIcon.VisaIcon
 
 private val demoVisaActions = listOf(
     GooglePay,

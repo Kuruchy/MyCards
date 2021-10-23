@@ -1,4 +1,4 @@
-package com.kurulabs.mycards.model
+package com.kurulabs.mycards.model.cards
 
 import androidx.annotation.DrawableRes
 import com.kurulabs.mycards.R

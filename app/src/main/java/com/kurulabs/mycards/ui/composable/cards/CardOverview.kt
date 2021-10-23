@@ -1,4 +1,4 @@
-package com.kurulabs.mycards.ui.composable
+package com.kurulabs.mycards.ui.composable.cards
 
 import android.content.Context
 import android.widget.Toast
@@ -8,6 +8,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import com.kurulabs.mycards.CardViewModel
+import com.kurulabs.mycards.ui.composable.cards.Actions
+import com.kurulabs.mycards.ui.composable.cards.Carrousel
 import com.kurulabs.mycards.ui.theme.MyCardsTheme
 
 

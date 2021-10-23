@@ -1,8 +1,7 @@
-package com.kurulabs.mycards.ui.composable
+package com.kurulabs.mycards.ui.composable.cards
 
 import Action
 import ActionTitle
-import android.content.Context
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.padding
@@ -14,7 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.kurulabs.mycards.CardViewModel
-import com.kurulabs.mycards.model.CardActionItem.CardAction
+import com.kurulabs.mycards.model.cards.CardActionItem.CardAction
 
 
 @Composable

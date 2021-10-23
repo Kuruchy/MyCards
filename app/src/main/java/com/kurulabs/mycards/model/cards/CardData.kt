@@ -1,6 +1,6 @@
-package com.kurulabs.mycards.model
+package com.kurulabs.mycards.model.cards
 
-import com.kurulabs.mycards.model.CardActionItem.CardAction
+import com.kurulabs.mycards.model.cards.CardActionItem.CardAction
 
 data class CardData(
     val typeName: String,

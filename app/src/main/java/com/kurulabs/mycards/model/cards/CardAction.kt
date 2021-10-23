@@ -1,10 +1,10 @@
-package com.kurulabs.mycards.model
+package com.kurulabs.mycards.model.cards
 
 import androidx.annotation.DrawableRes
 import com.kurulabs.mycards.R
-import com.kurulabs.mycards.model.CardActionItem.GroupTitle.CardGroupTitle
-import com.kurulabs.mycards.model.CardActionItem.GroupTitle.PayGroupTitle
-import com.kurulabs.mycards.model.CardActionItem.GroupTitle.PinGroupTitle
+import com.kurulabs.mycards.model.cards.CardActionItem.GroupTitle.CardGroupTitle
+import com.kurulabs.mycards.model.cards.CardActionItem.GroupTitle.PayGroupTitle
+import com.kurulabs.mycards.model.cards.CardActionItem.GroupTitle.PinGroupTitle
 
 sealed class CardActionItem {
     open class GroupTitle(
