@@ -13,10 +13,13 @@ import com.kurulabs.mycards.model.CardIcon.VisaIcon
 private val demoVisaActions = listOf(
     GooglePay,
     CardLimits,
-    ActivateCard,
     OrderCard,
     CancelCard,
     PinChange,
+)
+
+private val demoInactiveVisaActions = listOf(
+    ActivateCard,
 )
 
 private val demoGiroActions = listOf(
@@ -42,7 +45,16 @@ private val demoVisa = CardData(
     actions = demoVisaActions
 )
 
+private val demoInactiveVisa = CardData(
+    typeName = "VISA Card",
+    maskedNumber = "xxxx xxxx xxxx 4444",
+    owner = "Saruman the White",
+    icon = VisaIcon,
+    actions = demoInactiveVisaActions
+)
+
 fun getDemoCards(): List<CardData> = listOf(
     demoGiro,
-    demoVisa
+    demoVisa,
+    demoInactiveVisa,
 )
