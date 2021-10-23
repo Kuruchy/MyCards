@@ -34,8 +34,18 @@ internal fun Card(modifier: Modifier = Modifier, cardData: CardData) {
             .fillMaxWidth()
             .wrapContentHeight()
     ) {
+        Text(
+            modifier = modifier
+                .fillMaxWidth()
+                .padding(vertical = 16.dp)
+                .padding(horizontal = 8.dp),
+            text = cardData.typeName,
+            color = colorResource(id = R.color.orange),
+            textAlign = TextAlign.Center,
+        )
         Image(
             modifier = modifier
+                .padding(horizontal = 80.dp)
                 .fillMaxWidth(),
             contentScale = ContentScale.FillWidth,
             painter = painterResource(id = cardData.icon.res),
@@ -44,10 +54,20 @@ internal fun Card(modifier: Modifier = Modifier, cardData: CardData) {
         Text(
             modifier = modifier
                 .fillMaxWidth()
-                .padding(all = 8.dp),
-            text = cardData.maskedNumber,
+                .padding(top = 16.dp)
+                .padding(horizontal = 8.dp),
+            text = cardData.owner,
             color = MaterialTheme.colors.onBackground,
-            textAlign = TextAlign.Center
+            textAlign = TextAlign.Center,
+        )
+        Text(
+            modifier = modifier
+                .fillMaxWidth()
+                .padding(horizontal = 8.dp)
+                .padding(bottom = 16.dp),
+            text = cardData.maskedNumber,
+            color = MaterialTheme.colors.onBackground.copy(alpha = 0.3f),
+            textAlign = TextAlign.Center,
         )
     }
 }
