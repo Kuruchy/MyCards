@@ -5,11 +5,11 @@ import android.widget.Toast
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import com.kurulabs.mycards.CardViewModel
-import com.kurulabs.mycards.ui.composable.cards.Actions
-import com.kurulabs.mycards.ui.composable.cards.Carrousel
+import com.kurulabs.mycards.ui.composable.main.BottomNavigationHeight
 import com.kurulabs.mycards.ui.theme.MyCardsTheme
 
 
@@ -17,7 +17,9 @@ import com.kurulabs.mycards.ui.theme.MyCardsTheme
 fun CardOverview(viewModel: CardViewModel, context: Context) {
     MyCardsTheme {
         Column(
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(bottom = BottomNavigationHeight),
             verticalArrangement = Arrangement.Top,
         ) {
             Carrousel(viewModel)

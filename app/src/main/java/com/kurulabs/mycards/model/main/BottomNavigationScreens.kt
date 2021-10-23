@@ -9,7 +9,6 @@ sealed class BottomNavigationScreens(
     @StringRes val stringResId: Int,
     @DrawableRes val drawResId: Int
 ) {
-
     object Home : BottomNavigationScreens("Cards", R.string.navigation_cards, R.drawable.ic_credit_card)
     object About : BottomNavigationScreens("About", R.string.navigation_about, android.R.drawable.ic_dialog_info)
 }
