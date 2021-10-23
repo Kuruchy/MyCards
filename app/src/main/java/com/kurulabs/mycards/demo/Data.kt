@@ -1,10 +1,10 @@
 package com.kurulabs.mycards.demo
 
 import com.kurulabs.mycards.model.CardData
-import com.kurulabs.mycards.model.CardLimits
-import com.kurulabs.mycards.model.GiroIcon
-import com.kurulabs.mycards.model.OrderCard
-import com.kurulabs.mycards.model.VisaIcon
+import com.kurulabs.mycards.model.CardAction.CardLimits
+import com.kurulabs.mycards.model.CardAction.OrderCard
+import com.kurulabs.mycards.model.CardIcon.GiroIcon
+import com.kurulabs.mycards.model.CardIcon.VisaIcon
 
 
 internal fun getDemoCards() = listOf(
