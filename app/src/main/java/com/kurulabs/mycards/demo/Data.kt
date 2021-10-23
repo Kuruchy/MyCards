@@ -1,8 +1,16 @@
 package com.kurulabs.mycards.demo
 
+import com.kurulabs.mycards.model.CardActionItem
+import com.kurulabs.mycards.model.CardActionItem.CardAction.ActivateCard
+import com.kurulabs.mycards.model.CardActionItem.CardAction.CancelCard
+import com.kurulabs.mycards.model.CardActionItem.CardAction.CardLimits
+import com.kurulabs.mycards.model.CardActionItem.CardAction.GooglePay
+import com.kurulabs.mycards.model.CardActionItem.CardAction.OrderCard
+import com.kurulabs.mycards.model.CardActionItem.CardAction.PinChange
+import com.kurulabs.mycards.model.CardActionItem.GroupTitle.CardTitle
+import com.kurulabs.mycards.model.CardActionItem.GroupTitle.PayTitle
+import com.kurulabs.mycards.model.CardActionItem.GroupTitle.PinTitle
 import com.kurulabs.mycards.model.CardData
-import com.kurulabs.mycards.model.CardAction.CardLimits
-import com.kurulabs.mycards.model.CardAction.OrderCard
 import com.kurulabs.mycards.model.CardIcon.GiroIcon
 import com.kurulabs.mycards.model.CardIcon.VisaIcon
 
@@ -25,12 +33,13 @@ internal fun getDemoCards() = listOf(
 )
 
 internal fun getDemoActions() = listOf(
-    OrderCard,
+    PayTitle,
+    GooglePay,
     CardLimits,
+    CardTitle,
+    ActivateCard,
     OrderCard,
-    CardLimits,
-    OrderCard,
-    CardLimits,
-    OrderCard,
-    CardLimits,
+    CancelCard,
+    PinTitle,
+    PinChange,
 )

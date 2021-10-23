@@ -14,8 +14,8 @@
                         <option name="values">
                           <map>
                             <entry key="assetSourceType" value="FILE" />
-                            <entry key="outputName" value="ic_attach_money_black_24dp" />
-                            <entry key="sourceFile" value="C:\Users\kuruc\Downloads\attach_money_black_24dp.svg" />
+                            <entry key="outputName" value="ic_pin" />
+                            <entry key="sourceFile" value="C:\Users\kuruc\Downloads\pin_black_24dp.svg" />
                           </map>
                         </option>
                       </PersistentState>

@@ -3,7 +3,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.material.MaterialTheme
@@ -18,22 +17,46 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.kurulabs.mycards.demo.getDemoActions
-import com.kurulabs.mycards.model.CardAction
+import com.kurulabs.mycards.model.CardActionItem
+import com.kurulabs.mycards.model.CardActionItem.CardAction
+import com.kurulabs.mycards.model.CardActionItem.GroupTitle
 import com.kurulabs.mycards.ui.theme.MyCardsTheme
 
 @Preview(showBackground = true)
 @Composable
 fun ActionPreview() {
     MyCardsTheme {
-        Action(Modifier, getDemoActions().first())
+        Action(Modifier, getDemoActions().last())
     }
 }
 
 @Composable
 internal fun Action(
     modifier: Modifier = Modifier,
-    cardAction: CardAction
+    cardActionItem: CardActionItem
 ) {
+    when (cardActionItem) {
+        is GroupTitle -> Title(modifier = modifier, cardTitle = cardActionItem)
+        is CardAction -> Action(modifier = modifier, cardAction = cardActionItem)
+    }
+}
+
+@Composable
+private fun Title(modifier: Modifier, cardTitle: GroupTitle) {
+    Text(
+        modifier = modifier
+            .fillMaxWidth()
+            .padding(horizontal = 8.dp)
+            .padding(vertical = 16.dp),
+        text = cardTitle.title,
+        color = MaterialTheme.colors.onBackground,
+        textAlign = TextAlign.Start,
+        fontSize = 16.sp
+    )
+}
+
+@Composable
+private fun Action(modifier: Modifier, cardAction: CardAction) {
     Row(
         modifier = modifier
             .fillMaxWidth()
@@ -62,7 +85,8 @@ internal fun Action(
                     .padding(top = 8.dp),
                 text = cardAction.title,
                 color = MaterialTheme.colors.onBackground,
-                textAlign = TextAlign.Start
+                textAlign = TextAlign.Start,
+                fontSize = 16.sp
             )
 
             Text(

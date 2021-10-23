@@ -85,7 +85,7 @@ fun DefaultPreview() {
                 items(
                     items = actions,
                     itemContent = { item ->
-                        Action(modifier = Modifier, cardAction = item)
+                        Action(modifier = Modifier, cardActionItem = item)
                     }
                 )
             }
