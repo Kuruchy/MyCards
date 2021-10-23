@@ -18,6 +18,7 @@ import com.kurulabs.mycards.R
 import com.kurulabs.mycards.demo.getDemoCards
 import com.kurulabs.mycards.model.CardData
 import com.kurulabs.mycards.ui.theme.MyCardsTheme
+import com.kurulabs.mycards.ui.theme.typography
 
 @Preview(showBackground = true)
 @Composable
@@ -40,7 +41,7 @@ internal fun Card(modifier: Modifier = Modifier, cardData: CardData) {
                 .padding(vertical = 16.dp)
                 .padding(horizontal = 8.dp),
             text = cardData.typeName,
-            color = colorResource(id = R.color.orange),
+            style = typography.h1,
             textAlign = TextAlign.Center,
         )
         Image(
@@ -57,7 +58,7 @@ internal fun Card(modifier: Modifier = Modifier, cardData: CardData) {
                 .padding(top = 16.dp)
                 .padding(horizontal = 8.dp),
             text = cardData.owner,
-            color = MaterialTheme.colors.onBackground,
+            style = typography.h2,
             textAlign = TextAlign.Center,
         )
         Text(
@@ -67,7 +68,7 @@ internal fun Card(modifier: Modifier = Modifier, cardData: CardData) {
                 .padding(top = 8.dp)
                 .padding(bottom = 16.dp),
             text = cardData.maskedNumber,
-            color = MaterialTheme.colors.onBackground.copy(alpha = 0.3f),
+            style = typography.subtitle1,
             textAlign = TextAlign.Center,
         )
     }

@@ -4,5 +4,6 @@ internal data class CardData(
     val typeName: String,
     val maskedNumber: String,
     val owner: String,
-    val icon: CardIcon
+    val icon: CardIcon,
+    val actions: List<CardActionItem>
 )

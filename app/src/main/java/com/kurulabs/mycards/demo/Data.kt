@@ -14,25 +14,7 @@ import com.kurulabs.mycards.model.CardData
 import com.kurulabs.mycards.model.CardIcon.GiroIcon
 import com.kurulabs.mycards.model.CardIcon.VisaIcon
 
-private val demoGiro = CardData(
-    typeName = "girocard",
-    maskedNumber = "xxxx xxxx xxxx 3333",
-    owner = "Gandalf the Gray",
-    icon = GiroIcon
-)
-private val demoVisa = CardData(
-    typeName = "VISA Card",
-    maskedNumber = "xxxx xxxx xxxx 4444",
-    owner = "Gandalf the White",
-    icon = VisaIcon
-)
-
-internal fun getDemoCards() = listOf(
-    demoGiro,
-    demoVisa
-)
-
-internal fun getDemoActions() = listOf(
+internal val demoVisaActions = listOf(
     PayTitle,
     GooglePay,
     CardLimits,
@@ -42,4 +24,34 @@ internal fun getDemoActions() = listOf(
     CancelCard,
     PinTitle,
     PinChange,
+)
+
+internal val demoGiroActions = listOf(
+    PayTitle,
+    CardLimits,
+    CardTitle,
+    OrderCard,
+    CancelCard,
+    PinTitle,
+    PinChange,
+)
+
+private val demoGiro = CardData(
+    typeName = "girocard",
+    maskedNumber = "xxxx xxxx xxxx 3333",
+    owner = "Gandalf the Gray",
+    icon = GiroIcon,
+    actions = demoGiroActions
+)
+private val demoVisa = CardData(
+    typeName = "VISA Card",
+    maskedNumber = "xxxx xxxx xxxx 4444",
+    owner = "Gandalf the White",
+    icon = VisaIcon,
+    actions = demoVisaActions
+)
+
+internal fun getDemoCards(): List<CardData> = listOf(
+    demoGiro,
+    demoVisa
 )

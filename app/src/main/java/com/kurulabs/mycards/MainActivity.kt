@@ -22,10 +22,11 @@ import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.kurulabs.mycards.demo.getDemoActions
 import com.kurulabs.mycards.demo.getDemoCards
 import com.kurulabs.mycards.ui.theme.MyCardsTheme
 
@@ -50,8 +51,12 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun DefaultPreview() {
     MyCardsTheme {
-        val cards = getDemoCards()
-        val actions = getDemoActions()
+        val cards = remember {
+            mutableStateOf(getDemoCards())
+        }
+        val actions = remember {
+            mutableStateOf(cards.value[0].actions)
+        }
         val rowState = rememberLazyListState()
 
         Column(
@@ -68,8 +73,9 @@ fun DefaultPreview() {
                 state = rowState
             ) {
                 items(
-                    items = cards,
+                    items = cards.value,
                     itemContent = { item ->
+                        actions.value = item.actions
                         Card(modifier = Modifier.width(400.dp), cardData = item)
                     }
                 )
@@ -83,7 +89,7 @@ fun DefaultPreview() {
                     .background(color = MaterialTheme.colors.background)
             ) {
                 items(
-                    items = actions,
+                    items = actions.value,
                     itemContent = { item ->
                         Action(modifier = Modifier, cardActionItem = item)
                     }

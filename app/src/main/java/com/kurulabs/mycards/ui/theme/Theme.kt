@@ -1,6 +1,7 @@
 package com.kurulabs.mycards.ui.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.material.Colors
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.darkColors
 import androidx.compose.material.lightColors
@@ -11,13 +12,15 @@ import com.kurulabs.mycards.R
 private val DarkColorPalette = darkColors(
     primary = Color(R.color.orange),
     primaryVariant = Color(R.color.orangeDark),
-    secondary = Color(R.color.turquoise)
+    secondary = Color(R.color.turquoise),
+    onBackground = Color.White,
 )
 
 private val LightColorPalette = lightColors(
     primary = Color(R.color.orange),
     primaryVariant = Color(R.color.orangeDark),
-    secondary = Color(R.color.turquoise)
+    secondary = Color(R.color.turquoise),
+    onBackground = Color.Black,
 
     /* Other default colors to override
     background = Color.White,
@@ -29,17 +32,19 @@ private val LightColorPalette = lightColors(
     */
 )
 
+lateinit var palette: Colors
+
 @Composable
 fun MyCardsTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composable () -> Unit) {
-    val colors = if (darkTheme) {
+    palette = if (darkTheme) {
         DarkColorPalette
     } else {
         LightColorPalette
     }
 
     MaterialTheme(
-        colors = colors,
-        typography = Typography,
+        colors = palette,
+        typography = typography,
         shapes = Shapes,
         content = content
     )

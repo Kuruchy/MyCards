@@ -16,17 +16,18 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.kurulabs.mycards.demo.getDemoActions
+import com.kurulabs.mycards.demo.demoVisaActions
 import com.kurulabs.mycards.model.CardActionItem
 import com.kurulabs.mycards.model.CardActionItem.CardAction
 import com.kurulabs.mycards.model.CardActionItem.GroupTitle
 import com.kurulabs.mycards.ui.theme.MyCardsTheme
+import com.kurulabs.mycards.ui.theme.typography
 
 @Preview(showBackground = true)
 @Composable
 fun ActionPreview() {
     MyCardsTheme {
-        Action(Modifier, getDemoActions().last())
+        Action(Modifier, demoVisaActions.last())
     }
 }
 
@@ -49,9 +50,7 @@ private fun Title(modifier: Modifier, cardTitle: GroupTitle) {
             .padding(horizontal = 8.dp)
             .padding(vertical = 16.dp),
         text = cardTitle.title,
-        color = MaterialTheme.colors.onBackground,
-        textAlign = TextAlign.Start,
-        fontSize = 16.sp
+        style = typography.h2
     )
 }
 
@@ -84,9 +83,7 @@ private fun Action(modifier: Modifier, cardAction: CardAction) {
                     .fillMaxWidth()
                     .padding(top = 8.dp),
                 text = cardAction.title,
-                color = MaterialTheme.colors.onBackground,
-                textAlign = TextAlign.Start,
-                fontSize = 16.sp
+                style = typography.body1
             )
 
             Text(
@@ -95,9 +92,7 @@ private fun Action(modifier: Modifier, cardAction: CardAction) {
                     .padding(top = 2.dp)
                     .padding(bottom = 8.dp),
                 text = cardAction.subtitle,
-                color = MaterialTheme.colors.onBackground.copy(alpha = 0.3f),
-                textAlign = TextAlign.Start,
-                fontSize = 14.sp
+                style = typography.subtitle1
             )
         }
     }
