@@ -53,7 +53,8 @@ fun BottomBar(
                     Text(
                         modifier = Modifier,
                         text = stringResource(id = screen.stringResId),
-                        style = typography.subtitle1
+                        style = typography.subtitle1,
+                        color = MaterialTheme.colors.onBackground.copy(0.3f),
                     )
                 },
                 selected = isSelected,

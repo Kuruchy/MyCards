@@ -1,4 +1,4 @@
-package com.kurulabs.mycards.ui
+package com.kurulabs.mycards.ui.composable.main
 
 import android.content.Context
 import androidx.compose.material.DrawerValue
@@ -13,7 +13,6 @@ import com.kurulabs.mycards.CardViewModel
 import com.kurulabs.mycards.model.main.BottomNavigationScreens
 import com.kurulabs.mycards.ui.composable.about.About
 import com.kurulabs.mycards.ui.composable.cards.CardOverview
-import com.kurulabs.mycards.ui.composable.main.BottomBar
 
 private val DEFAULT_SCREEN = BottomNavigationScreens.Home
 

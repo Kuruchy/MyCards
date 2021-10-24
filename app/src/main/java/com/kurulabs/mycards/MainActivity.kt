@@ -8,7 +8,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.ui.Modifier
-import com.kurulabs.mycards.ui.MainScreen
+import com.kurulabs.mycards.ui.composable.main.MainScreen
 import com.kurulabs.mycards.ui.theme.MyCardsTheme
 
 class MainActivity : ComponentActivity() {
