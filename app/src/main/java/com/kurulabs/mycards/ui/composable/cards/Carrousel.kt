@@ -1,6 +1,5 @@
 package com.kurulabs.mycards.ui.composable.cards
 
-import CarrouselItem
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -28,11 +27,16 @@ internal fun Carrousel(
         HorizontalPager(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(screenHeight * 0.44f),
+                .height(screenHeight * 0.4f),
             count = cards.size,
             state = pagerState,
         ) { page ->
-            CarrouselItem(modifier = Modifier.wrapContentHeight().width(maxWidth * 0.5f), cardData = cards[page] )
+            BankCard(
+                modifier = Modifier
+                    .wrapContentHeight()
+                    .width(maxWidth * 0.8f),
+                cardData = cards[page]
+            )
         }
 
         viewModel.setActions(pagerState.currentPage)

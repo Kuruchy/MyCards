@@ -30,22 +30,28 @@ private val demoDebitActions = listOf(
 )
 
 private val demoDebitCard = CardData(
+    bankName = "Wizard Bank",
     typeName = DEBIT,
-    maskedNumber = "xxxx xxxx xxxx 3333",
+    number = "1234 5678 9000 1234",
+    validDate = "12/24",
     owner = "Gandalf the Gray",
     actions = demoDebitActions
 )
 
 private val demoCreditCard = CardData(
+    bankName = "Wizard Bank",
     typeName = CREDIT,
-    maskedNumber = "xxxx xxxx xxxx 4444",
+    number = "5678 9012 3456 7890",
+    validDate = "12/26",
     owner = "Gandalf the White",
     actions = demoCreditActions
 )
 
 private val demoInactiveCreditCard = CardData(
+    bankName = "Wizard Bank",
     typeName = CREDIT,
-    maskedNumber = "xxxx xxxx xxxx 4444",
+    number = "5678 9012 7890 9999",
+    validDate = "10/25",
     owner = "Saruman the White",
     actions = demoInactiveCreditActions
 )
