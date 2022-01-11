@@ -7,10 +7,10 @@ import com.kurulabs.mycards.model.cards.CardActionItem.CardAction.GooglePay
 import com.kurulabs.mycards.model.cards.CardActionItem.CardAction.OrderCard
 import com.kurulabs.mycards.model.cards.CardActionItem.CardAction.PinChange
 import com.kurulabs.mycards.model.cards.CardData
-import com.kurulabs.mycards.model.cards.CardIcon.GiroIcon
-import com.kurulabs.mycards.model.cards.CardIcon.VisaIcon
+import com.kurulabs.mycards.model.cards.CardType.CREDIT
+import com.kurulabs.mycards.model.cards.CardType.DEBIT
 
-private val demoVisaActions = listOf(
+private val demoCreditActions = listOf(
     GooglePay,
     CardLimits,
     OrderCard,
@@ -18,43 +18,40 @@ private val demoVisaActions = listOf(
     PinChange,
 )
 
-private val demoInactiveVisaActions = listOf(
+private val demoInactiveCreditActions = listOf(
     ActivateCard,
 )
 
-private val demoGiroActions = listOf(
+private val demoDebitActions = listOf(
     CardLimits,
     OrderCard,
     CancelCard,
     PinChange,
 )
 
-private val demoGiro = CardData(
-    typeName = "girocard",
+private val demoDebitCard = CardData(
+    typeName = DEBIT,
     maskedNumber = "xxxx xxxx xxxx 3333",
     owner = "Gandalf the Gray",
-    icon = GiroIcon,
-    actions = demoGiroActions
+    actions = demoDebitActions
 )
 
-private val demoVisa = CardData(
-    typeName = "VISA Card",
+private val demoCreditCard = CardData(
+    typeName = CREDIT,
     maskedNumber = "xxxx xxxx xxxx 4444",
     owner = "Gandalf the White",
-    icon = VisaIcon,
-    actions = demoVisaActions
+    actions = demoCreditActions
 )
 
-private val demoInactiveVisa = CardData(
-    typeName = "VISA Card",
+private val demoInactiveCreditCard = CardData(
+    typeName = CREDIT,
     maskedNumber = "xxxx xxxx xxxx 4444",
     owner = "Saruman the White",
-    icon = VisaIcon,
-    actions = demoInactiveVisaActions
+    actions = demoInactiveCreditActions
 )
 
 fun getDemoCards(): List<CardData> = listOf(
-    demoGiro,
-    demoVisa,
-    demoInactiveVisa,
+    demoDebitCard,
+    demoCreditCard,
+    demoInactiveCreditCard,
 )

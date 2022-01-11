@@ -1,8 +1,7 @@
 package com.kurulabs.mycards.ui.composable.cards
 
-import Card
+import CarrouselItem
 import androidx.compose.foundation.layout.BoxWithConstraints
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
@@ -33,7 +32,7 @@ internal fun Carrousel(
             count = cards.size,
             state = pagerState,
         ) { page ->
-            Card(modifier = Modifier.wrapContentHeight().width(maxWidth * 0.5f), cardData = cards[page] )
+            CarrouselItem(modifier = Modifier.wrapContentHeight().width(maxWidth * 0.5f), cardData = cards[page] )
         }
 
         viewModel.setActions(pagerState.currentPage)
