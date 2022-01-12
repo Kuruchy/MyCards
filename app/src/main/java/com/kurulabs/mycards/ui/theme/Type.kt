@@ -1,6 +1,7 @@
 package com.kurulabs.mycards.ui.theme
 
 import androidx.compose.material.Typography
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
@@ -30,7 +31,7 @@ val typography = Typography(
     subtitle1 = TextStyle(
         fontFamily = FontFamily.Default,
         fontWeight = FontWeight.Normal,
-        color = palette.onBackground.copy(alpha = 0.3f),
+        color = Color.Gray,
         fontSize = 15.sp
     )
 )

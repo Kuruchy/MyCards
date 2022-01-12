@@ -13,6 +13,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
@@ -87,21 +88,21 @@ internal fun BankCard(
                     max = 30.sp,
                 ),
                 overflow = TextOverflow.Visible,
-                style = MaterialTheme.typography.body1,
+                style = MaterialTheme.typography.body1.copy(color = Color.White),
                 textAlign = TextAlign.Center
             )
             Text(
                 modifier = Modifier
                     .fillMaxWidth(),
                 text = cardData.validDate,
-                style = typography.body2,
+                style = typography.body2.copy(color = Color.White),
                 textAlign = TextAlign.End,
             )
             Text(
                 modifier = Modifier
                     .fillMaxWidth(),
                 text = cardData.owner.uppercase(Locale.getDefault()),
-                style = typography.h2,
+                style = typography.h2.copy(color = Color.White),
                 textAlign = TextAlign.Start,
             )
         }

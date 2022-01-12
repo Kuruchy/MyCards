@@ -1,3 +1,4 @@
+import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
@@ -19,7 +20,13 @@ import com.kurulabs.mycards.model.cards.CardActionItem.CardAction.GooglePay
 import com.kurulabs.mycards.ui.theme.MyCardsTheme
 import com.kurulabs.mycards.ui.theme.typography
 
-@Preview(showBackground = true)
+@Preview(
+    showBackground = true
+)
+@Preview(
+    showBackground = true,
+    uiMode = UI_MODE_NIGHT_YES
+)
 @Composable
 fun ActionPreview() {
     MyCardsTheme {
