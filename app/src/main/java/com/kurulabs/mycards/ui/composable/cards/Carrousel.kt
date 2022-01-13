@@ -11,23 +11,23 @@ import androidx.compose.ui.unit.Dp
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.rememberPagerState
-import com.kurulabs.mycards.CardViewModel
+import com.kurulabs.mycards.model.cards.CardData
 
 
 @OptIn(ExperimentalPagerApi::class)
 @Composable
 internal fun Carrousel(
-    viewModel: CardViewModel,
+    cards: List<CardData>,
     screenHeight: Dp,
+    setActions: (Int) -> Unit
 ) {
     BoxWithConstraints {
         val pagerState = rememberPagerState()
 
-        val cards = viewModel.cards.value
         HorizontalPager(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(screenHeight * 0.4f),
+                .height(screenHeight),
             count = cards.size,
             state = pagerState,
         ) { page ->
@@ -39,6 +39,6 @@ internal fun Carrousel(
             )
         }
 
-        viewModel.setActions(pagerState.currentPage)
+        setActions(pagerState.currentPage)
     }
 }

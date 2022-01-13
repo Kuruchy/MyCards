@@ -13,9 +13,11 @@ import com.kurulabs.mycards.CardViewModel
 import com.kurulabs.mycards.ui.composable.main.BottomNavigationHeight
 import com.kurulabs.mycards.ui.theme.MyCardsTheme
 
-
 @Composable
-fun CardOverview(viewModel: CardViewModel, context: Context) {
+fun CardOverview(
+    viewModel: CardViewModel,
+    context: Context
+) {
     MyCardsTheme {
         BoxWithConstraints {
             val maxHeight = maxHeight
@@ -25,9 +27,16 @@ fun CardOverview(viewModel: CardViewModel, context: Context) {
                     .padding(bottom = BottomNavigationHeight),
                 verticalArrangement = Arrangement.Top,
             ) {
-                Carrousel(viewModel = viewModel, maxHeight)
+                Carrousel(
+                    cards = viewModel.cards,
+                    screenHeight = maxHeight * 0.4f,
+                    setActions = { index ->
+                        viewModel.setActions(index = index)
+                    }
+                )
                 Actions(
-                    viewModel = viewModel,
+                    actions = viewModel.actions,
+                    screenHeight = maxHeight * 0.6f,
                     onClick = { cardAction ->
                         Toast.makeText(context, cardAction.name, Toast.LENGTH_SHORT).show()
                     }
