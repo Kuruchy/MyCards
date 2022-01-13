@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -21,6 +22,7 @@ fun CardOverview(
     MyCardsTheme {
         BoxWithConstraints {
             val maxHeight = maxHeight
+            val maxWidth = maxWidth
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -28,15 +30,15 @@ fun CardOverview(
                 verticalArrangement = Arrangement.Top,
             ) {
                 Carrousel(
+                    modifier = Modifier.height(maxHeight * 0.4f),
                     cards = viewModel.cards,
-                    screenHeight = maxHeight * 0.4f,
                     setActions = { index ->
                         viewModel.setActions(index = index)
                     }
                 )
                 Actions(
+                    modifier = Modifier.height(maxHeight * 0.6f),
                     actions = viewModel.actions,
-                    screenHeight = maxHeight * 0.6f,
                     onClick = { cardAction ->
                         Toast.makeText(context, cardAction.name, Toast.LENGTH_SHORT).show()
                     }

@@ -17,13 +17,12 @@ import com.kurulabs.mycards.model.cards.CardActionItem.CardAction
 
 @Composable
 internal fun Actions(
+    modifier: Modifier,
     actions: List<CardAction>,
-    screenHeight: Dp,
     onClick: (CardAction) -> Unit
 ) {
     LazyColumn(
-        modifier = Modifier
-            .height(screenHeight)
+        modifier = modifier
             .wrapContentWidth()
             .padding(horizontal = 8.dp)
             .background(color = MaterialTheme.colors.background),
