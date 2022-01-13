@@ -6,6 +6,7 @@ import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.MaterialTheme.typography
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
@@ -18,7 +19,6 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.kurulabs.mycards.model.main.BottomNavigationScreens
 import com.kurulabs.mycards.ui.theme.Orange
-import com.kurulabs.mycards.ui.theme.typography
 
 private lateinit var selectedIndex: MutableState<Int>
 

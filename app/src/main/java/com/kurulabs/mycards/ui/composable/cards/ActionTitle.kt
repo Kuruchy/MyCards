@@ -1,5 +1,6 @@
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.MaterialTheme.typography
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -8,7 +9,6 @@ import androidx.compose.ui.unit.dp
 import com.kurulabs.mycards.model.cards.CardActionItem.GroupTitle
 import com.kurulabs.mycards.model.cards.CardActionItem.GroupTitle.PayGroupTitle
 import com.kurulabs.mycards.ui.theme.MyCardsTheme
-import com.kurulabs.mycards.ui.theme.typography
 
 @Preview(showBackground = true)
 @Composable
@@ -27,6 +27,6 @@ internal fun ActionTitle(modifier: Modifier, cardTitle: GroupTitle) {
             .padding(horizontal = 8.dp)
             .padding(vertical = 16.dp),
         text = cardTitle.title,
-        style = typography.h2
+        style = typography.h6
     )
 }

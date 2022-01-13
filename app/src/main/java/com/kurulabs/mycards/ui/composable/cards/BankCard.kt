@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.material.Card
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.MaterialTheme.typography
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -30,7 +31,6 @@ import com.kurulabs.mycards.ui.composable.AutoResizeText
 import com.kurulabs.mycards.ui.composable.FontSizeRange
 import com.kurulabs.mycards.ui.theme.BankCardRoundedCornersShape
 import com.kurulabs.mycards.ui.theme.MyCardsTheme
-import com.kurulabs.mycards.ui.theme.typography
 import java.util.*
 
 @Preview(showBackground = true)

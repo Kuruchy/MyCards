@@ -21,15 +21,6 @@ private val LightColorPalette = lightColors(
     primaryVariant = Color(R.color.orangeDark),
     secondary = Color(R.color.turquoise),
     onBackground = Color.Black,
-
-    /* Other default colors to override
-    background = Color.White,
-    surface = Color.White,
-    onPrimary = Color.White,
-    onSecondary = Color.Black,
-    onBackground = Color.Black,
-    onSurface = Color.Black,
-    */
 )
 
 lateinit var palette: Colors
@@ -44,7 +35,6 @@ fun MyCardsTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composabl
 
     MaterialTheme(
         colors = palette,
-        typography = typography,
         shapes = Shapes,
         content = content
     )
