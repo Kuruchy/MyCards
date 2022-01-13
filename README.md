@@ -7,7 +7,6 @@
 <p align="center">  
 MyCards is a small demo application that uses modern Android Libraries, <br>and MVVM architecture. This project focuses on Jetpack Compose. Also uses Accompanist.
 </p>
-</br>
 
 
 ## Screenshots Darkmode
@@ -15,7 +14,6 @@ MyCards is a small demo application that uses modern Android Libraries, <br>and 
     <tr>
         <td><img src="/screenshots/First.png"/></td>
         <td><img src="/screenshots/Second.png"/></td>
-        <td><img src="/screenshots/Third.png"/></td>
     </tr>
 </table>
 
@@ -24,7 +22,6 @@ MyCards is a small demo application that uses modern Android Libraries, <br>and 
     <tr>
         <td><img src="/screenshots/First_w.png"/></td>
         <td><img src="/screenshots/Second_w.png"/></td>
-        <td><img src="/screenshots/Third_w.png"/></td>
     </tr>
 </table>
 
