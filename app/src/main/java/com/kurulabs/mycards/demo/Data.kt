@@ -57,7 +57,7 @@ private val demoInactiveCreditCard = CardData(
 )
 
 fun getDemoCards(): List<CardData> = listOf(
-    demoDebitCard,
     demoCreditCard,
+    demoDebitCard,
     demoInactiveCreditCard,
 )
