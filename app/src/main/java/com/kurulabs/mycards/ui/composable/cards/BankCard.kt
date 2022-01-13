@@ -9,7 +9,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.material.Card
-import androidx.compose.material.MaterialTheme
 import androidx.compose.material.MaterialTheme.typography
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -18,19 +17,18 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.kurulabs.mycards.R
 import com.kurulabs.mycards.demo.getDemoCards
 import com.kurulabs.mycards.model.cards.CardData
 import com.kurulabs.mycards.model.cards.getBackgroundColor
 import com.kurulabs.mycards.model.cards.getTextColor
 import com.kurulabs.mycards.ui.composable.AutoResizeText
-import com.kurulabs.mycards.ui.composable.FontSizeRange
 import com.kurulabs.mycards.ui.theme.BankCardRoundedCornersShape
 import com.kurulabs.mycards.ui.theme.MyCardsTheme
+import com.kurulabs.mycards.ui.theme.bigFontRange
+import com.kurulabs.mycards.ui.theme.smallFontRange
 import java.util.*
 
 @Preview(showBackground = true)
@@ -66,15 +64,10 @@ internal fun BankCard(
                 AutoResizeText(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(bottom = 8.dp)
-                        .padding(horizontal = 16.dp),
+                        .padding(bottom = 8.dp),
                     text = cardData.bankName,
                     maxLines = 1,
-                    fontSizeRange = FontSizeRange(
-                        min = 10.sp,
-                        max = 22.sp,
-                    ),
-                    overflow = TextOverflow.Visible,
+                    fontSizeRange = bigFontRange,
                     style = typography.h1.copy(
                         color = cardData.getTextColor(),
                         fontWeight = FontWeight.Bold
@@ -94,12 +87,8 @@ internal fun BankCard(
                         .fillMaxWidth(),
                     text = cardData.number,
                     maxLines = 1,
-                    fontSizeRange = FontSizeRange(
-                        min = 10.sp,
-                        max = 30.sp,
-                    ),
-                    overflow = TextOverflow.Visible,
-                    style = MaterialTheme.typography.body1.copy(color = Color.White),
+                    fontSizeRange = bigFontRange,
+                    style = typography.body1.copy(color = Color.White),
                     textAlign = TextAlign.Center
                 )
                 AutoResizeText(
@@ -107,26 +96,24 @@ internal fun BankCard(
                         .width(maxHeight * 0.3f)
                         .align(Alignment.End),
                     maxLines = 1,
-                    fontSizeRange = FontSizeRange(
-                        min = 10.sp,
-                        max = 16.sp,
-                    ),
-                    overflow = TextOverflow.Visible,
+                    fontSizeRange = smallFontRange,
                     text = cardData.validDate,
-                    style = typography.body2.copy(color = Color.White),
+                    style = typography.body2.copy(
+                        color = Color.White,
+                        fontWeight = FontWeight.Bold
+                    ),
                     textAlign = TextAlign.End,
                 )
                 AutoResizeText(
                     modifier = Modifier
                         .fillMaxWidth(),
                     maxLines = 1,
-                    fontSizeRange = FontSizeRange(
-                        min = 10.sp,
-                        max = 16.sp,
-                    ),
-                    overflow = TextOverflow.Visible,
+                    fontSizeRange = smallFontRange,
                     text = cardData.owner.uppercase(Locale.getDefault()),
-                    style = typography.h2.copy(color = Color.White),
+                    style = typography.h2.copy(
+                        color = Color.White,
+                        fontWeight = FontWeight.Bold
+                    ),
                     textAlign = TextAlign.Start,
                 )
             }
