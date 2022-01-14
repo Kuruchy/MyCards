@@ -24,7 +24,7 @@ internal fun ActionTitle(modifier: Modifier, cardTitle: GroupTitle) {
     Text(
         modifier = modifier
             .fillMaxWidth()
-            .padding(horizontal = 8.dp)
+            .padding(horizontal = 24.dp)
             .padding(vertical = 16.dp),
         text = cardTitle.title,
         style = typography.h6

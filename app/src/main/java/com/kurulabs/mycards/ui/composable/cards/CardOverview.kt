@@ -36,7 +36,7 @@ fun CardOverview(
                 }
             )
             Actions(
-                modifier = Modifier.height(maxHeight * 0.6f).padding(horizontal = 16.dp),
+                modifier = Modifier.height(maxHeight * 0.6f),
                 actions = viewModel.actions,
                 onClick = { cardAction ->
                     Toast.makeText(context, cardAction.name, Toast.LENGTH_SHORT).show()

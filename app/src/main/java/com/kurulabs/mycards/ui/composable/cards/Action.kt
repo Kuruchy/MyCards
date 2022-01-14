@@ -45,6 +45,7 @@ internal fun Action(
             .clickable {
                 onClickAction(cardAction)
             }
+            .padding(16.dp)
     ) {
         Image(
             modifier = modifier
