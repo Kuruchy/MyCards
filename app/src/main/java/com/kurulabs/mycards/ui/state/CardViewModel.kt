@@ -1,10 +1,10 @@
-package com.kurulabs.mycards
+package com.kurulabs.mycards.ui.state
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
-import com.kurulabs.mycards.demo.getDemoCards
+import com.kurulabs.mycards.ui.demo.getDemoCards
 
 class CardViewModel : ViewModel() {
     var cards by mutableStateOf(getDemoCards())

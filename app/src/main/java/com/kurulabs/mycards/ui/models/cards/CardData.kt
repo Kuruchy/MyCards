@@ -1,6 +1,6 @@
-package com.kurulabs.mycards.model.cards
+package com.kurulabs.mycards.ui.models.cards
 
-import com.kurulabs.mycards.model.cards.CardActionItem.CardAction
+import com.kurulabs.mycards.ui.models.cards.CardActionItem.CardAction
 import com.kurulabs.mycards.ui.theme.Orange
 import com.kurulabs.mycards.ui.theme.Turquoise
 

@@ -1,14 +1,14 @@
-package com.kurulabs.mycards.demo
+package com.kurulabs.mycards.ui.demo
 
-import com.kurulabs.mycards.model.cards.CardActionItem.CardAction.ActivateCard
-import com.kurulabs.mycards.model.cards.CardActionItem.CardAction.CancelCard
-import com.kurulabs.mycards.model.cards.CardActionItem.CardAction.CardLimits
-import com.kurulabs.mycards.model.cards.CardActionItem.CardAction.GooglePay
-import com.kurulabs.mycards.model.cards.CardActionItem.CardAction.OrderCard
-import com.kurulabs.mycards.model.cards.CardActionItem.CardAction.PinChange
-import com.kurulabs.mycards.model.cards.CardData
-import com.kurulabs.mycards.model.cards.CardType.CREDIT
-import com.kurulabs.mycards.model.cards.CardType.DEBIT
+import com.kurulabs.mycards.ui.models.cards.CardActionItem.CardAction.ActivateCard
+import com.kurulabs.mycards.ui.models.cards.CardActionItem.CardAction.CancelCard
+import com.kurulabs.mycards.ui.models.cards.CardActionItem.CardAction.CardLimits
+import com.kurulabs.mycards.ui.models.cards.CardActionItem.CardAction.GooglePay
+import com.kurulabs.mycards.ui.models.cards.CardActionItem.CardAction.OrderCard
+import com.kurulabs.mycards.ui.models.cards.CardActionItem.CardAction.PinChange
+import com.kurulabs.mycards.ui.models.cards.CardData
+import com.kurulabs.mycards.ui.models.cards.CardType.CREDIT
+import com.kurulabs.mycards.ui.models.cards.CardType.DEBIT
 
 private val demoCreditActions = listOf(
     GooglePay,

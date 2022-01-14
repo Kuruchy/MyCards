@@ -10,7 +10,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import com.kurulabs.mycards.CardViewModel
+import com.kurulabs.mycards.ui.state.CardViewModel
 import com.kurulabs.mycards.ui.composable.main.BottomNavigationHeight
 import com.kurulabs.mycards.ui.theme.MyCardsTheme
 

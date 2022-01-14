@@ -9,8 +9,8 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.kurulabs.mycards.CardViewModel
-import com.kurulabs.mycards.model.main.BottomNavigationScreens
+import com.kurulabs.mycards.ui.state.CardViewModel
+import com.kurulabs.mycards.ui.models.main.BottomNavigationScreens
 import com.kurulabs.mycards.ui.composable.about.About
 import com.kurulabs.mycards.ui.composable.cards.CardOverview
 

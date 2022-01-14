@@ -20,10 +20,10 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.kurulabs.mycards.R
-import com.kurulabs.mycards.demo.getDemoCards
-import com.kurulabs.mycards.model.cards.CardData
-import com.kurulabs.mycards.model.cards.getBackgroundColor
-import com.kurulabs.mycards.model.cards.getTextColor
+import com.kurulabs.mycards.ui.demo.getDemoCards
+import com.kurulabs.mycards.ui.models.cards.CardData
+import com.kurulabs.mycards.ui.models.cards.getBackgroundColor
+import com.kurulabs.mycards.ui.models.cards.getTextColor
 import com.kurulabs.mycards.ui.composable.AutoResizeText
 import com.kurulabs.mycards.ui.theme.BankCardRoundedCornersShape
 import com.kurulabs.mycards.ui.theme.MyCardsTheme
