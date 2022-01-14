@@ -9,10 +9,10 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.kurulabs.mycards.ui.state.CardViewModel
-import com.kurulabs.mycards.ui.models.main.BottomNavigationScreens
 import com.kurulabs.mycards.ui.composable.about.About
 import com.kurulabs.mycards.ui.composable.cards.CardOverview
+import com.kurulabs.mycards.ui.models.main.BottomNavigationScreens
+import com.kurulabs.mycards.ui.state.CardViewModel
 
 private val DEFAULT_SCREEN = BottomNavigationScreens.Home
 
@@ -35,7 +35,10 @@ fun MainScreen(viewModel: CardViewModel, context: Context) {
         },
 
         content = {
-            NavHost(navController, startDestination = DEFAULT_SCREEN.route) {
+            NavHost(
+                navController = navController,
+                startDestination = DEFAULT_SCREEN.route
+            ) {
                 composable(BottomNavigationScreens.Home.route) {
                     CardOverview(viewModel = viewModel, context = context)
                 }
