@@ -7,19 +7,18 @@ import androidx.compose.material.darkColors
 import androidx.compose.material.lightColors
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
-import com.kurulabs.mycards.R
 
 private val DarkColorPalette = darkColors(
-    primary = Color(R.color.orange),
-    primaryVariant = Color(R.color.orangeDark),
-    secondary = Color(R.color.turquoise),
+    primary = Orange,
+    primaryVariant = OrangeDark,
+    secondary = Turquoise,
     onBackground = Color.White,
 )
 
 private val LightColorPalette = lightColors(
-    primary = Color(R.color.orange),
-    primaryVariant = Color(R.color.orangeDark),
-    secondary = Color(R.color.turquoise),
+    primary = Orange,
+    primaryVariant = OrangeDark,
+    secondary = Turquoise,
     onBackground = Color.Black,
 )
 
