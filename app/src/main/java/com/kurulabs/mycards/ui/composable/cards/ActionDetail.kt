@@ -39,8 +39,6 @@ import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.kurulabs.mycards.ui.demo.getDemoCards
-import com.kurulabs.mycards.ui.models.cards.CardActionItem
-import com.kurulabs.mycards.ui.models.cards.CardData
 import com.kurulabs.mycards.ui.theme.MyCardsTheme
 import com.kurulabs.mycards.ui.theme.OrangeDark
 import kotlin.math.roundToInt
@@ -50,8 +48,8 @@ import kotlin.math.roundToInt
 fun ActionDetailPreview() {
     MyCardsTheme {
         ActionDetail(
-            cardData = getDemoCards().first(),
-            cardAction = getDemoCards().first().actions.first()
+            cardDataId = 0,
+            cardActionId = 0
         )
     }
 }
@@ -60,9 +58,11 @@ fun ActionDetailPreview() {
 @Composable
 fun ActionDetail(
     modifier: Modifier = Modifier,
-    cardData: CardData,
-    cardAction: CardActionItem.CardAction
+    cardDataId: Int,
+    cardActionId: Int,
 ) {
+    val cardData = getDemoCards()[cardDataId]
+    val cardAction = cardData.actions[cardActionId]
     Column(modifier = modifier.fillMaxSize()) {
         BankCard(
             modifier = Modifier

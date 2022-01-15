@@ -8,10 +8,11 @@ import com.kurulabs.mycards.ui.demo.getDemoCards
 
 class CardViewModel : ViewModel() {
     var cards by mutableStateOf(getDemoCards())
-
+    var card by mutableStateOf(getDemoCards().first())
     var actions by mutableStateOf(cards.first().actions)
 
     fun setActions(index: Int) {
-        actions = cards[index].actions
+        card = cards[index]
+        actions = card.actions
     }
 }

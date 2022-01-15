@@ -16,7 +16,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             MyCardsTheme {
-                MainScreen(viewModel, this)
+                MainScreen(viewModel)
             }
         }
     }

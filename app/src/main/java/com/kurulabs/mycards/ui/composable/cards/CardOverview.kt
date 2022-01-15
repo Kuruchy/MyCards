@@ -1,7 +1,5 @@
 package com.kurulabs.mycards.ui.composable.cards
 
-import android.content.Context
-import android.widget.Toast
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
@@ -10,18 +8,17 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
 import com.kurulabs.mycards.ui.composable.main.BottomNavigationHeight
+import com.kurulabs.mycards.ui.models.cards.CardActionItem
 import com.kurulabs.mycards.ui.state.CardViewModel
 
 @Composable
 fun CardOverview(
     viewModel: CardViewModel,
-    context: Context
+    onActionClick: (CardActionItem.CardAction) -> Unit
 ) {
     BoxWithConstraints {
         val maxHeight = maxHeight
-        val maxWidth = maxWidth
         Column(
             modifier = Modifier
                 .fillMaxWidth()
@@ -38,9 +35,7 @@ fun CardOverview(
             Actions(
                 modifier = Modifier.height(maxHeight * 0.6f),
                 actions = viewModel.actions,
-                onClick = { cardAction ->
-                    Toast.makeText(context, cardAction.name, Toast.LENGTH_SHORT).show()
-                }
+                onClick = onActionClick
             )
         }
     }
