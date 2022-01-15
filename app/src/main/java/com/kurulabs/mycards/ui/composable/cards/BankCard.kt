@@ -45,7 +45,7 @@ fun BankCardPreview() {
 
 @Composable
 internal fun BankCard(
-    modifier: Modifier,
+    modifier: Modifier = Modifier,
     cardData: CardData
 ) {
     BoxWithConstraints {
