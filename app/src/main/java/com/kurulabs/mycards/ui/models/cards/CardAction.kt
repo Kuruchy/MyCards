@@ -24,6 +24,8 @@ sealed class CardActionItem {
         val description: String,
         @DrawableRes val icon: Int,
         val groupTitle: GroupTitle,
+        val interaction: CardActionInteraction,
+        val interactionText: String,
     ) : CardActionItem() {
 
         object GooglePay : CardAction(
@@ -31,6 +33,8 @@ sealed class CardActionItem {
             description = "Configure your Google Pay",
             icon = R.drawable.ic_contactless,
             groupTitle = PayGroupTitle,
+            interaction = PressToInteract,
+            interactionText = "Activate Google Pay now!",
         )
 
         object CardLimits : CardAction(
@@ -38,6 +42,8 @@ sealed class CardActionItem {
             description = "Change the Weekly and Daily Limit",
             icon = R.drawable.ic_attach_money,
             groupTitle = PayGroupTitle,
+            interaction = PressToInteract,
+            interactionText = "Set your limits",
         )
 
         object ActivateCard : CardAction(
@@ -45,13 +51,17 @@ sealed class CardActionItem {
             description = "New Card? Activate it here",
             icon = R.drawable.ic_credit_score,
             groupTitle = CardGroupTitle,
+            interaction = SwipeToInteract,
+            interactionText = "Swipe to activate this Card",
         )
 
         object OrderCard : CardAction(
             name = "Order Card",
-            description = "Order a replacement of this card",
+            description = "Order a replacement of this Card",
             icon = R.drawable.ic_credit_card,
             groupTitle = CardGroupTitle,
+            interaction = SwipeToInteract,
+            interactionText = "Swipe to order a replacement",
         )
 
         object CancelCard : CardAction(
@@ -59,6 +69,8 @@ sealed class CardActionItem {
             description = "Did you loose your card? Cancel it here",
             icon = R.drawable.ic_credit_card_off,
             groupTitle = CardGroupTitle,
+            interaction = SwipeToInteract,
+            interactionText = "Swipe to cancel this Card",
         )
 
         object PinChange : CardAction(
@@ -66,6 +78,8 @@ sealed class CardActionItem {
             description = "Have you forgotten your pin? Change it here",
             icon = R.drawable.ic_pin,
             groupTitle = PinGroupTitle,
+            interaction = PressToInteract,
+            interactionText = "Choose your Pin",
         )
     }
 }
