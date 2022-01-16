@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.material.Card
@@ -18,6 +19,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.kurulabs.mycards.R
 import com.kurulabs.mycards.ui.demo.getDemoCards
@@ -63,8 +65,9 @@ internal fun BankCard(
             ) {
                 AutoResizeText(
                     modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(bottom = 8.dp),
+                        .width(maxHeight * 0.5f)
+                        .padding(bottom = 8.dp)
+                        .align(Alignment.End),
                     text = cardData.bankName,
                     maxLines = 1,
                     fontSizeRange = bigFontRange,
@@ -76,8 +79,7 @@ internal fun BankCard(
                 )
                 Image(
                     modifier = Modifier
-                        .width(maxHeight * 0.16f)
-                        .height(maxHeight * 0.16f)
+                        .size(maxHeight * 0.16f)
                         .align(Alignment.Start),
                     painter = painterResource(id = R.drawable.chip),
                     contentDescription = null

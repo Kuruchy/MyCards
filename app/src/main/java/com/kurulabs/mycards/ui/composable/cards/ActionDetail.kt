@@ -4,11 +4,13 @@ import androidx.compose.animation.Crossfade
 import androidx.compose.foundation.background
 import androidx.compose.foundation.gestures.Orientation
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -63,14 +65,24 @@ fun ActionDetail(
 ) {
     val cardData = getDemoCards()[cardDataId]
     val cardAction = cardData.actions[cardActionId]
+
     Column(modifier = modifier.fillMaxSize()) {
-        BankCard(
+        BoxWithConstraints(
             modifier = Modifier
-                .aspectRatio(1.5f)
-                .wrapContentHeight()
-                .padding(horizontal = 24.dp),
-            cardData = cardData
-        )
+                .height(200.dp)
+                .padding(24.dp)
+                .fillMaxWidth(),
+            contentAlignment = Alignment.Center
+
+        ) {
+            BankCard(
+                modifier = Modifier
+                    .aspectRatio(1.5f)
+                    .wrapContentHeight()
+                    .padding(8.dp),
+                cardData = cardData
+            )
+        }
         Spacer(modifier = Modifier.size(24.dp))
         Text(
             modifier = modifier
