@@ -23,6 +23,7 @@ import com.kurulabs.mycards.ui.demo.getDemoCards
 import com.kurulabs.mycards.ui.models.cards.PressToInteract
 import com.kurulabs.mycards.ui.models.cards.SwipeToInteract
 import com.kurulabs.mycards.ui.theme.MyCardsTheme
+import com.kurulabs.mycards.ui.theme.Orange
 
 @Preview(showBackground = true)
 @Composable
@@ -62,7 +63,13 @@ fun ActionDetail(
                 cardData = cardData
             )
         }
-        Spacer(modifier = Modifier.size(24.dp))
+        Text(
+            modifier = modifier
+                .fillMaxWidth()
+                .padding(24.dp),
+            text = cardAction.name,
+            style = MaterialTheme.typography.h5.copy(color = Orange, fontWeight = FontWeight.Bold)
+        )
         Text(
             modifier = modifier
                 .fillMaxWidth()
@@ -70,7 +77,6 @@ fun ActionDetail(
             text = cardAction.description,
             style = MaterialTheme.typography.body1
         )
-        Spacer(modifier = Modifier.size(24.dp))
         when (cardAction.interaction) {
             SwipeToInteract -> SwipeableButton(
                 modifier = modifier.align(Alignment.CenterHorizontally),
