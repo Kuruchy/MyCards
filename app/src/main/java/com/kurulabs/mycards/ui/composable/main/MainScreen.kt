@@ -5,6 +5,7 @@ import androidx.compose.material.Scaffold
 import androidx.compose.material.rememberDrawerState
 import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.Composable
+import androidx.navigation.NavController
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -64,7 +65,8 @@ fun MainScreen(viewModel: CardViewModel) {
                 ) { navBackStackEntry ->
                     ActionDetail(
                         cardDataId = navBackStackEntry.arguments!!.getInt("cardDataId"),
-                        cardActionId = navBackStackEntry.arguments!!.getInt("cardActionId")
+                        cardActionId = navBackStackEntry.arguments!!.getInt("cardActionId"),
+                        onBackClick = { navigateUp(navController) }
                     )
                 }
                 composable(BottomNavigationScreens.About.route) {
@@ -75,4 +77,8 @@ fun MainScreen(viewModel: CardViewModel) {
 
         scaffoldState = scaffoldState
     )
+}
+
+fun navigateUp(navController: NavController) {
+    navController.navigateUp()
 }
