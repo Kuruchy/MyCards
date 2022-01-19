@@ -25,6 +25,15 @@ MyCards is a small demo application that uses modern Android Libraries, <br>and 
     </tr>
 </table>
 
+## Detail View
+<table>
+    <tr>
+        <td><img src="/screenshots/Detail_w.png"/></td>
+        <td><img src="/screenshots/Detail.png"/></td>
+    </tr>
+</table>
+
+
 # License
 ```xml
 Designed and developed by 2021 Kuruchy (Bruno Retolaza)
