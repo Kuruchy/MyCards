@@ -82,7 +82,7 @@ fun ActionDetail(
                 modifier = modifier
                     .fillMaxWidth()
                     .padding(24.dp),
-                text = cardAction.description,
+                text = cardAction.detailDescription,
                 style = MaterialTheme.typography.body1
             )
             when (cardAction.interaction) {

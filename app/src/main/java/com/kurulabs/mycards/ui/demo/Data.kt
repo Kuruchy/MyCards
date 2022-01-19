@@ -3,7 +3,6 @@ package com.kurulabs.mycards.ui.demo
 import com.kurulabs.mycards.ui.models.cards.CardActionItem.CardAction.ActivateCard
 import com.kurulabs.mycards.ui.models.cards.CardActionItem.CardAction.CancelCard
 import com.kurulabs.mycards.ui.models.cards.CardActionItem.CardAction.CardLimits
-import com.kurulabs.mycards.ui.models.cards.CardActionItem.CardAction.GooglePay
 import com.kurulabs.mycards.ui.models.cards.CardActionItem.CardAction.OrderCard
 import com.kurulabs.mycards.ui.models.cards.CardActionItem.CardAction.PinChange
 import com.kurulabs.mycards.ui.models.cards.CardData
@@ -11,7 +10,6 @@ import com.kurulabs.mycards.ui.models.cards.CardType.CREDIT
 import com.kurulabs.mycards.ui.models.cards.CardType.DEBIT
 
 private val demoCreditActions = listOf(
-    GooglePay,
     CardLimits,
     OrderCard,
     CancelCard,

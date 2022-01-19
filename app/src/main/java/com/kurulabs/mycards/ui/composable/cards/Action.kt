@@ -19,7 +19,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.kurulabs.mycards.ui.models.cards.CardActionItem.CardAction
-import com.kurulabs.mycards.ui.models.cards.CardActionItem.CardAction.GooglePay
+import com.kurulabs.mycards.ui.models.cards.CardActionItem.CardAction.CancelCard
 import com.kurulabs.mycards.ui.theme.MyCardsTheme
 
 @Preview(
@@ -28,7 +28,7 @@ import com.kurulabs.mycards.ui.theme.MyCardsTheme
 @Composable
 fun ActionPreview() {
     MyCardsTheme {
-        Action(Modifier, GooglePay) {}
+        Action(Modifier, CancelCard) {}
     }
 }
 
