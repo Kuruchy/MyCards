@@ -5,17 +5,21 @@ import androidx.compose.material.Scaffold
 import androidx.compose.material.rememberDrawerState
 import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.navigation.NavController
-import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import androidx.navigation.navArgument
 import com.kurulabs.mycards.ui.composable.about.About
 import com.kurulabs.mycards.ui.composable.cards.ActionDetail
 import com.kurulabs.mycards.ui.composable.cards.CardOverview
 import com.kurulabs.mycards.ui.models.main.BottomNavigationScreens
 import com.kurulabs.mycards.ui.state.CardViewModel
+import kotlinx.coroutines.flow.update
 
 private val DEFAULT_SCREEN = BottomNavigationScreens.Home
 
@@ -23,6 +27,9 @@ private val DEFAULT_SCREEN = BottomNavigationScreens.Home
 fun MainScreen(viewModel: CardViewModel) {
     val navController = rememberNavController()
     val scaffoldState = rememberScaffoldState(rememberDrawerState(DrawerValue.Closed))
+    var carouselIndex by remember { mutableStateOf(0) }
+    val cardsState by viewModel.cardsState.collectAsState()
+    val cardDetailState by viewModel.cardDetailState.collectAsState()
 
     Scaffold(
         bottomBar = {
@@ -44,28 +51,22 @@ fun MainScreen(viewModel: CardViewModel) {
             ) {
                 composable(BottomNavigationScreens.Home.route) {
                     CardOverview(
-                        viewModel = viewModel
-                    ) { cardAction ->
-                        val cardData = viewModel.card
-                        val cardDataId = viewModel.cards.indexOf(cardData)
-                        val cardActionId = viewModel.actions.indexOf(cardAction)
-                        navController.navigate("${BottomNavigationScreens.Home.route}/${cardDataId}/${cardActionId}")
-                    }
-                }
-                composable(
-                    route = "${BottomNavigationScreens.Home.route}/{cardDataId}/{cardActionId}",
-                    arguments = listOf(
-                        navArgument("cardDataId") {
-                            type = NavType.IntType
-                        },
-                        navArgument("cardActionId") {
-                            type = NavType.IntType
+                        cardsState = cardsState,
+                        onSwipe = { index -> carouselIndex = index },
+                        onActionClick = { cardAction ->
+                            viewModel.cardDetailState.update {
+                                it.copy(
+                                    cardData = cardsState.cards[carouselIndex],
+                                    cardAction = cardAction
+                                )
+                            }
+                            navController.navigate("Detail")
                         }
                     )
-                ) { navBackStackEntry ->
+                }
+                composable("Detail") {
                     ActionDetail(
-                        cardDataId = navBackStackEntry.arguments!!.getInt("cardDataId"),
-                        cardActionId = navBackStackEntry.arguments!!.getInt("cardActionId"),
+                        cardDetailState = cardDetailState,
                         onBackClick = { navigateUp(navController) }
                     )
                 }
@@ -79,6 +80,6 @@ fun MainScreen(viewModel: CardViewModel) {
     )
 }
 
-fun navigateUp(navController: NavController) {
+private fun navigateUp(navController: NavController) {
     navController.navigateUp()
 }

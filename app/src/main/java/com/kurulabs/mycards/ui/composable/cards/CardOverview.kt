@@ -7,11 +7,16 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.kurulabs.mycards.data.sources.getDemoCards
 import com.kurulabs.mycards.ui.composable.main.BottomNavigationHeight
 import com.kurulabs.mycards.ui.models.cards.CardActionItem
-import com.kurulabs.mycards.ui.state.CardViewModel
+import com.kurulabs.mycards.ui.state.CardsState
 import com.kurulabs.mycards.ui.theme.MyCardsTheme
 
 @Preview(showBackground = true)
@@ -19,7 +24,8 @@ import com.kurulabs.mycards.ui.theme.MyCardsTheme
 fun CardOverviewPreview() {
     MyCardsTheme {
         CardOverview(
-            viewModel = CardViewModel(),
+            cardsState = CardsState(cards = getDemoCards()),
+            onSwipe = {},
             onActionClick = {}
         )
     }
@@ -27,9 +33,12 @@ fun CardOverviewPreview() {
 
 @Composable
 fun CardOverview(
-    viewModel: CardViewModel,
+    cardsState: CardsState,
+    onSwipe: (Int) -> Unit,
     onActionClick: (CardActionItem.CardAction) -> Unit
 ) {
+    var carouselIndex by remember { mutableStateOf(0) }
+
     BoxWithConstraints {
         val maxHeight = maxHeight
         Column(
@@ -40,14 +49,15 @@ fun CardOverview(
         ) {
             Carrousel(
                 modifier = Modifier.height(maxHeight * 0.3f),
-                cards = viewModel.cards,
-                setActions = { index ->
-                    viewModel.setActions(index = index)
+                cards = cardsState.cards,
+                onSwipe = { index ->
+                    carouselIndex = index
+                    onSwipe.invoke(index)
                 }
             )
             Actions(
                 modifier = Modifier.height(maxHeight * 0.7f),
-                actions = viewModel.actions,
+                actions = cardsState.cards.getOrNull(carouselIndex)?.actions ?: emptyList(),
                 onClick = onActionClick
             )
         }

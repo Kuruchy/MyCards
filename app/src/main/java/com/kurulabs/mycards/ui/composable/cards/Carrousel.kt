@@ -19,7 +19,7 @@ import com.kurulabs.mycards.ui.models.cards.CardData
 internal fun Carrousel(
     modifier: Modifier,
     cards: List<CardData>,
-    setActions: (Int) -> Unit
+    onSwipe: (Int) -> Unit
 ) {
     BoxWithConstraints {
         val pagerState = rememberPagerState()
@@ -39,6 +39,6 @@ internal fun Carrousel(
             )
         }
 
-        setActions(pagerState.currentPage)
+        onSwipe(pagerState.currentPage)
     }
 }

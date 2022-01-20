@@ -19,9 +19,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.kurulabs.mycards.ui.demo.getDemoCards
+import com.kurulabs.mycards.data.sources.getDemoCards
 import com.kurulabs.mycards.ui.models.cards.PressToInteract
 import com.kurulabs.mycards.ui.models.cards.SwipeToInteract
+import com.kurulabs.mycards.ui.state.CardDetailState
 import com.kurulabs.mycards.ui.theme.MyCardsTheme
 import com.kurulabs.mycards.ui.theme.Orange
 
@@ -30,8 +31,10 @@ import com.kurulabs.mycards.ui.theme.Orange
 fun ActionDetailPreview() {
     MyCardsTheme {
         ActionDetail(
-            cardDataId = 0,
-            cardActionId = 0,
+            cardDetailState = CardDetailState(
+                cardData = getDemoCards().first(),
+                cardAction = getDemoCards().first().actions.first()
+            ),
             onBackClick = {}
         )
     }
@@ -41,12 +44,12 @@ fun ActionDetailPreview() {
 @Composable
 fun ActionDetail(
     modifier: Modifier = Modifier,
-    cardDataId: Int,
-    cardActionId: Int,
+    cardDetailState: CardDetailState,
     onBackClick: () -> Unit,
 ) {
-    val cardData = getDemoCards()[cardDataId]
-    val cardAction = cardData.actions[cardActionId]
+    val cardData = requireNotNull(cardDetailState.cardData)
+    val cardAction = requireNotNull(cardDetailState.cardAction)
+
     BoxWithConstraints(modifier = Modifier.fillMaxSize()) {
         val maxHeight = maxHeight
         Column(modifier = modifier.fillMaxSize()) {
@@ -76,7 +79,10 @@ fun ActionDetail(
                     .fillMaxWidth()
                     .padding(24.dp),
                 text = cardAction.name,
-                style = MaterialTheme.typography.h5.copy(color = Orange, fontWeight = FontWeight.Bold)
+                style = MaterialTheme.typography.h5.copy(
+                    color = Orange,
+                    fontWeight = FontWeight.Bold
+                )
             )
             Text(
                 modifier = modifier
