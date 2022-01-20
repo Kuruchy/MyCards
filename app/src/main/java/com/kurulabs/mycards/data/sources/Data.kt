@@ -1,4 +1,4 @@
-package com.kurulabs.mycards.ui.demo
+package com.kurulabs.mycards.data.sources
 
 import com.kurulabs.mycards.ui.models.cards.CardActionItem.CardAction.ActivateCard
 import com.kurulabs.mycards.ui.models.cards.CardActionItem.CardAction.CancelCard
