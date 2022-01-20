@@ -7,7 +7,9 @@ import androidx.activity.viewModels
 import com.kurulabs.mycards.ui.composable.main.MainScreen
 import com.kurulabs.mycards.ui.state.CardViewModel
 import com.kurulabs.mycards.ui.theme.MyCardsTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
     private val viewModel: CardViewModel by viewModels()
