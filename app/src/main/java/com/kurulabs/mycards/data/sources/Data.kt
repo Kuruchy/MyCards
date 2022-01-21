@@ -21,7 +21,6 @@ private val demoInactiveCreditActions = listOf(
 )
 
 private val demoDebitActions = listOf(
-    CardLimits,
     OrderCard,
     CancelCard,
     PinChange,
