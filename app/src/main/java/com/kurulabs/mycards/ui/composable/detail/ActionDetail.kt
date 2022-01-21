@@ -1,4 +1,4 @@
-package com.kurulabs.mycards.ui.composable.cards
+package com.kurulabs.mycards.ui.composable.detail
 
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
@@ -20,6 +20,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.kurulabs.mycards.data.sources.getDemoCards
+import com.kurulabs.mycards.ui.composable.cards.BankCard
 import com.kurulabs.mycards.ui.models.cards.PressToInteract
 import com.kurulabs.mycards.ui.models.cards.SwipeToInteract
 import com.kurulabs.mycards.ui.state.CardDetailState
@@ -93,7 +94,10 @@ fun ActionDetail(
             )
             when (cardAction.interaction) {
                 SwipeToInteract -> SwipeableButton(
-                    modifier = modifier.align(Alignment.CenterHorizontally),
+                    modifier = modifier
+                        .fillMaxWidth()
+                        .padding(24.dp)
+                        .align(Alignment.CenterHorizontally),
                     cardAction = cardAction
                 )
                 PressToInteract -> Button(

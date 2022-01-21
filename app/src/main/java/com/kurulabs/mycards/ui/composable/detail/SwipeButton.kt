@@ -1,4 +1,4 @@
-package com.kurulabs.mycards.ui.composable.cards
+package com.kurulabs.mycards.ui.composable.detail
 
 import androidx.compose.animation.Crossfade
 import androidx.compose.foundation.background
@@ -42,7 +42,10 @@ enum class ConfirmationState {
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
-fun SwipeableButton(modifier: Modifier = Modifier, cardAction: CardActionItem.CardAction) {
+fun SwipeableButton(
+    modifier: Modifier = Modifier,
+    cardAction: CardActionItem.CardAction
+) {
 
     val width = 350.dp
     val dragSize = 50.dp

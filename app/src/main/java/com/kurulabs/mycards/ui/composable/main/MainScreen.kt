@@ -16,8 +16,8 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.kurulabs.mycards.data.sources.getDemoCards
 import com.kurulabs.mycards.ui.composable.about.About
-import com.kurulabs.mycards.ui.composable.cards.ActionDetail
 import com.kurulabs.mycards.ui.composable.cards.CardOverview
+import com.kurulabs.mycards.ui.composable.detail.ActionDetail
 import com.kurulabs.mycards.ui.composable.errors.ErrorPage
 import com.kurulabs.mycards.ui.models.main.BottomNavigationScreens
 import com.kurulabs.mycards.ui.state.CardViewModel
