@@ -58,6 +58,13 @@ MyCards is based on the MVVM architecture and the Repository pattern, following 
     </tr>
 </table>
 
+## Other
+<table>
+    <tr>
+        <td><img src="preview/screenshots/Error.png"/></td>
+        <td><img src="preview/screenshots/About.png"/></td>
+    </tr>
+</table>
 
 # License
 ```xml
