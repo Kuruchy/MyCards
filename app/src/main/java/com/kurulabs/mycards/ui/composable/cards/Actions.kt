@@ -13,17 +13,23 @@ import com.kurulabs.mycards.ui.models.cards.CardActionItem.CardAction
 internal fun Actions(
     modifier: Modifier,
     actions: List<CardAction>,
+    isLoading: Boolean,
     onClick: (CardAction) -> Unit
 ) {
     LazyColumn(
-        modifier = modifier.wrapContentWidth(),
+        modifier = modifier
+            .wrapContentWidth(),
     ) {
         actions.groupBy { it.groupTitle.index }.forEach { (_, actions) ->
             item {
-                ActionTitle(modifier = Modifier, actions.first().groupTitle)
+                ActionTitle(
+                    modifier = Modifier,
+                    cardTitle = actions.first().groupTitle,
+                    isLoading = isLoading
+                )
             }
             items(actions) { action ->
-                Action(cardAction = action) { onClick.invoke(action) }
+                Action(cardAction = action, isLoading = isLoading) { onClick.invoke(action) }
             }
         }
     }

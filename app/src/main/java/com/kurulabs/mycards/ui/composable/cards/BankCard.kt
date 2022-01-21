@@ -36,8 +36,8 @@ import java.util.Locale
 fun BankCardPreview() {
     MyCardsTheme {
         BankCard(
-            Modifier
-                .width(120.dp), getDemoCards().first()
+            modifier = Modifier.width(120.dp),
+            cardData = getDemoCards().first()
         )
     }
 }

@@ -14,6 +14,7 @@ import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.HorizontalPagerIndicator
 import com.google.accompanist.pager.rememberPagerState
+import com.kurulabs.mycards.ui.composable.utils.shimmer
 import com.kurulabs.mycards.ui.models.cards.CardData
 
 
@@ -22,6 +23,7 @@ import com.kurulabs.mycards.ui.models.cards.CardData
 internal fun Carrousel(
     modifier: Modifier,
     cards: List<CardData>,
+    isLoading: Boolean,
     onSwipe: (Int) -> Unit
 ) {
     BoxWithConstraints {
@@ -38,7 +40,8 @@ internal fun Carrousel(
                     modifier = Modifier
                         .aspectRatio(1.5f)
                         .wrapContentHeight()
-                        .padding(horizontal = 24.dp),
+                        .padding(horizontal = 24.dp)
+                        .shimmer(isLoading),
                     cardData = cards[page]
                 )
             }

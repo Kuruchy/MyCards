@@ -18,6 +18,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.kurulabs.mycards.ui.composable.utils.shimmer
 import com.kurulabs.mycards.ui.models.cards.CardActionItem.CardAction
 import com.kurulabs.mycards.ui.models.cards.CardActionItem.CardAction.CancelCard
 import com.kurulabs.mycards.ui.theme.MyCardsTheme
@@ -28,7 +29,7 @@ import com.kurulabs.mycards.ui.theme.MyCardsTheme
 @Composable
 fun ActionPreview() {
     MyCardsTheme {
-        Action(Modifier, CancelCard) {}
+        Action(Modifier, CancelCard, false) {}
     }
 }
 
@@ -36,6 +37,7 @@ fun ActionPreview() {
 internal fun Action(
     modifier: Modifier = Modifier,
     cardAction: CardAction,
+    isLoading: Boolean,
     onClickAction: (CardAction) -> Unit
 ) {
     Row(
@@ -52,7 +54,8 @@ internal fun Action(
                 .width(width = 40.dp)
                 .padding(all = 4.dp)
                 .align(alignment = Alignment.CenterVertically)
-                .wrapContentHeight(),
+                .wrapContentHeight()
+                .shimmer(isLoading),
             contentScale = ContentScale.FillWidth,
             painter = painterResource(id = cardAction.icon),
             contentDescription = null
@@ -67,7 +70,8 @@ internal fun Action(
             Text(
                 modifier = modifier
                     .fillMaxWidth()
-                    .padding(top = 8.dp),
+                    .padding(top = 8.dp)
+                    .shimmer(isLoading),
                 text = cardAction.name,
                 style = typography.body1
             )
@@ -76,7 +80,8 @@ internal fun Action(
                     modifier = modifier
                         .fillMaxWidth()
                         .padding(top = 2.dp)
-                        .padding(bottom = 8.dp),
+                        .padding(bottom = 8.dp)
+                        .shimmer(isLoading),
                     text = cardAction.description,
                     style = typography.subtitle1
                 )

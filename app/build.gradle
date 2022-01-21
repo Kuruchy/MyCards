@@ -60,6 +60,7 @@ dependencies {
     // Accompanist
     implementation "com.google.accompanist:accompanist-pager:$versions.accompanist"
     implementation "com.google.accompanist:accompanist-pager-indicators:$versions.accompanist"
+    implementation "com.google.accompanist:accompanist-placeholder:$versions.accompanist"
 
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:$versions.lifecyleRuntime"
     implementation "androidx.activity:activity-compose:$versions.activityCompose"
@@ -73,8 +74,6 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
     androidTestImplementation "androidx.compose.ui:ui-test-junit4:$versions.compose"
     debugImplementation "androidx.compose.ui:ui-tooling:$versions.compose"
-
-    implementation 'com.valentinilk.shimmer:compose-shimmer:1.0.2'
 
     // DI
     implementation "com.google.dagger:hilt-android:$versions.hiltCoreVersion"

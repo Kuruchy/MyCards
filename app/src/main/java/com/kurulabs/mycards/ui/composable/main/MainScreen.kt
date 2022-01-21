@@ -14,10 +14,10 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.kurulabs.mycards.data.sources.getDemoCards
 import com.kurulabs.mycards.ui.composable.about.About
 import com.kurulabs.mycards.ui.composable.cards.ActionDetail
 import com.kurulabs.mycards.ui.composable.cards.CardOverview
-import com.kurulabs.mycards.ui.composable.cards.CardShimmerOverview
 import com.kurulabs.mycards.ui.composable.errors.ErrorPage
 import com.kurulabs.mycards.ui.models.main.BottomNavigationScreens
 import com.kurulabs.mycards.ui.state.CardViewModel
@@ -53,8 +53,12 @@ fun MainScreen(viewModel: CardViewModel, navigateToGitHub: () -> Unit) {
             ) {
                 composable(BottomNavigationScreens.Home.route) {
                     when {
-                        cardsState.isLoading -> CardShimmerOverview()
                         cardsState.isFailure -> ErrorPage()
+                        cardsState.isLoading -> CardOverview(
+                            cardsState = cardsState.copy(cards = getDemoCards()),
+                            onSwipe = { },
+                            onActionClick = { }
+                        )
                         else -> CardOverview(
                             cardsState = cardsState,
                             onSwipe = { index -> carouselIndex = index },

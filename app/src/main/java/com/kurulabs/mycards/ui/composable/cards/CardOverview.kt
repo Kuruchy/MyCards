@@ -50,6 +50,7 @@ fun CardOverview(
             Carrousel(
                 modifier = Modifier.height(maxHeight * 0.3f),
                 cards = cardsState.cards,
+                isLoading = cardsState.isLoading,
                 onSwipe = { index ->
                     carouselIndex = index
                     onSwipe.invoke(index)
@@ -58,6 +59,7 @@ fun CardOverview(
             Actions(
                 modifier = Modifier.height(maxHeight * 0.7f),
                 actions = cardsState.cards.getOrNull(carouselIndex)?.actions ?: emptyList(),
+                isLoading = cardsState.isLoading,
                 onClick = onActionClick
             )
         }
