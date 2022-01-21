@@ -1,11 +1,13 @@
 package com.kurulabs.mycards.ui.composable.cards
 
-import androidx.compose.foundation.layout.Arrangement
+import Action
+import ActionTitle
 import androidx.compose.foundation.layout.BoxWithConstraints
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -41,27 +43,40 @@ fun CardOverview(
 
     BoxWithConstraints {
         val maxHeight = maxHeight
-        Column(
+        LazyColumn(
             modifier = Modifier
-                .fillMaxWidth()
+                .fillMaxSize()
                 .padding(bottom = BottomNavigationHeight),
-            verticalArrangement = Arrangement.Top,
         ) {
-            Carrousel(
-                modifier = Modifier.height(maxHeight * 0.3f),
-                cards = cardsState.cards,
-                isLoading = cardsState.isLoading,
-                onSwipe = { index ->
-                    carouselIndex = index
-                    onSwipe.invoke(index)
+            val actions = cardsState.cards.getOrNull(carouselIndex)?.actions ?: emptyList()
+
+            item {
+                Carrousel(
+                    modifier = Modifier.height(maxHeight * 0.3f),
+                    cards = cardsState.cards,
+                    isLoading = cardsState.isLoading,
+                    onSwipe = { index ->
+                        carouselIndex = index
+                        onSwipe.invoke(index)
+                    }
+                )
+            }
+
+            actions.groupBy { it.groupTitle.index }.forEach { (_, actions) ->
+                item {
+                    ActionTitle(
+                        modifier = Modifier,
+                        cardTitle = actions.first().groupTitle,
+                        isLoading = cardsState.isLoading
+                    )
                 }
-            )
-            Actions(
-                modifier = Modifier.height(maxHeight * 0.7f),
-                actions = cardsState.cards.getOrNull(carouselIndex)?.actions ?: emptyList(),
-                isLoading = cardsState.isLoading,
-                onClick = onActionClick
-            )
+                items(actions) { action ->
+                    Action(
+                        cardAction = action,
+                        isLoading = cardsState.isLoading
+                    ) { onActionClick.invoke(action) }
+                }
+            }
         }
     }
 }
