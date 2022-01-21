@@ -17,21 +17,23 @@ import androidx.navigation.compose.rememberNavController
 import com.kurulabs.mycards.data.sources.getDemoCards
 import com.kurulabs.mycards.ui.about.About
 import com.kurulabs.mycards.ui.cards.CardOverview
+import com.kurulabs.mycards.ui.cards.state.CardViewModel
 import com.kurulabs.mycards.ui.detail.elements.ActionDetail
 import com.kurulabs.mycards.ui.errors.ErrorPage
 import com.kurulabs.mycards.ui.main.models.BottomNavigationScreens
-import com.kurulabs.mycards.ui.cards.state.CardViewModel
 import kotlinx.coroutines.flow.update
 
 private val DEFAULT_SCREEN = BottomNavigationScreens.Home
 
 @Composable
 fun MainScreen(viewModel: CardViewModel, navigateToGitHub: () -> Unit) {
-    val navController = rememberNavController()
     val scaffoldState = rememberScaffoldState(rememberDrawerState(DrawerValue.Closed))
-    var carrouselIndex by remember { mutableStateOf(0) }
     val cardsState by viewModel.cardsState.collectAsState()
     val cardDetailState by viewModel.cardDetailState.collectAsState()
+
+    val navController = rememberNavController()
+    var carrouselIndex by remember { mutableStateOf(0) }
+    var selectedScreen: BottomNavigationScreens by remember { mutableStateOf(DEFAULT_SCREEN) }
 
     Scaffold(
         bottomBar = {
@@ -41,8 +43,14 @@ fun MainScreen(viewModel: CardViewModel, navigateToGitHub: () -> Unit) {
             )
 
             BottomBar(
-                navController = navController,
-                items = bottomNavigationItems
+                selectedScreen = selectedScreen,
+                items = bottomNavigationItems,
+                onClick = { screen ->
+                    if (selectedScreen != screen) {
+                        selectedScreen = screen
+                        navController.navigate(screen.route)
+                    }
+                }
             )
         },
 
