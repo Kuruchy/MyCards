@@ -4,4 +4,6 @@
     <!-- Navigation -->
     <string name="navigation_cards">Cards</string>
     <string name="navigation_about">About</string>
+
+    <string name="gitHubLink" translatable="false">https://github.com/Kuruchy/MyCards</string>
 </resources>

@@ -1,5 +1,7 @@
 package com.kurulabs.mycards
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -18,8 +20,15 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             MyCardsTheme {
-                MainScreen(viewModel)
+                MainScreen(
+                    viewModel = viewModel,
+                    navigateToGitHub = ::navigateToGitHub
+                )
             }
         }
     }
+
+    private fun navigateToGitHub() = startActivity(
+        Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.gitHubLink)))
+    )
 }

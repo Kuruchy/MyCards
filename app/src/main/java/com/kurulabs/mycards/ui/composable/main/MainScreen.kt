@@ -26,7 +26,7 @@ import kotlinx.coroutines.flow.update
 private val DEFAULT_SCREEN = BottomNavigationScreens.Home
 
 @Composable
-fun MainScreen(viewModel: CardViewModel) {
+fun MainScreen(viewModel: CardViewModel, navigateToGitHub: () -> Unit) {
     val navController = rememberNavController()
     val scaffoldState = rememberScaffoldState(rememberDrawerState(DrawerValue.Closed))
     var carouselIndex by remember { mutableStateOf(0) }
@@ -77,7 +77,7 @@ fun MainScreen(viewModel: CardViewModel) {
                     )
                 }
                 composable(BottomNavigationScreens.About.route) {
-                    About()
+                    About(onClick = navigateToGitHub)
                 }
             }
         },
