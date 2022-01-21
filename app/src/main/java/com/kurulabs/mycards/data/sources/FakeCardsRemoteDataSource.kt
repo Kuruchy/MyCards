@@ -14,7 +14,7 @@ class FakeCardsRemoteDataSource @Inject constructor() : CardsDataSource {
         }
     }
 
-    private var requestDelay = (800L..2000L).random()
+    private var requestDelay = (2000L..4000L).random()
     private var requestCount = 0
     private fun shouldRandomlyFail() = ++requestCount % 5 == 0
 }
