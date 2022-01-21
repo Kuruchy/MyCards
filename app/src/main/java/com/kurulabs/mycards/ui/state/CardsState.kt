@@ -4,5 +4,6 @@ import com.kurulabs.mycards.ui.models.cards.CardData
 
 data class CardsState(
     val isLoading: Boolean = false,
+    val isFailure: Boolean = false,
     val cards: List<CardData> = emptyList()
 )

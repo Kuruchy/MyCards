@@ -10,4 +10,5 @@ val Shapes = Shapes(
     large = RoundedCornerShape(0.dp)
 )
 
+val BaseRoundedCornersShape = RoundedCornerShape(16.dp)
 val BankCardRoundedCornersShape = RoundedCornerShape(16.dp)

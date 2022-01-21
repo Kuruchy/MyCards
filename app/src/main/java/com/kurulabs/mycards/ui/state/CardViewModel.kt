@@ -38,13 +38,22 @@ class CardViewModel @Inject constructor(
         viewModelScope.launch {
             val cardsDeferred = async { cardsRepository.getAllCards() }
 
-            val cards = cardsDeferred.await().getOrNull() ?: emptyList()
+            val cardsResult = cardsDeferred.await()
 
-            cardsState.update {
-                it.copy(
-                    isLoading = false,
-                    cards = cards
-                )
+            if (cardsResult.isSuccess) {
+                cardsState.update {
+                    it.copy(
+                        isLoading = false,
+                        cards = cardsResult.getOrNull().orEmpty()
+                    )
+                }
+            } else {
+                cardsState.update {
+                    it.copy(
+                        isLoading = false,
+                        isFailure = true
+                    )
+                }
             }
         }
     }
