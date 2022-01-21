@@ -6,8 +6,8 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
-import com.kurulabs.mycards.ui.composable.main.MainScreen
-import com.kurulabs.mycards.ui.state.CardViewModel
+import com.kurulabs.mycards.ui.main.elements.MainScreen
+import com.kurulabs.mycards.ui.cards.state.CardViewModel
 import com.kurulabs.mycards.ui.theme.MyCardsTheme
 import dagger.hilt.android.AndroidEntryPoint
 

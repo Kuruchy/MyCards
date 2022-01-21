@@ -1,7 +1,7 @@
 package com.kurulabs.mycards.ui.theme
 
 import androidx.compose.ui.unit.sp
-import com.kurulabs.mycards.ui.composable.FontSizeRange
+import com.kurulabs.mycards.ui.utils.FontSizeRange
 
 val smallFontRange = FontSizeRange(
     min = 10.sp,

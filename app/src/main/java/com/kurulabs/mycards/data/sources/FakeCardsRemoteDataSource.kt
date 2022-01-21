@@ -1,6 +1,6 @@
 package com.kurulabs.mycards.data.sources
 
-import com.kurulabs.mycards.ui.models.cards.CardData
+import com.kurulabs.mycards.ui.cards.models.CardData
 import kotlinx.coroutines.delay
 import javax.inject.Inject
 

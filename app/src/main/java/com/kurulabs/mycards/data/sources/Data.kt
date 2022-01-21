@@ -1,13 +1,13 @@
 package com.kurulabs.mycards.data.sources
 
-import com.kurulabs.mycards.ui.models.cards.CardActionItem.CardAction.ActivateCard
-import com.kurulabs.mycards.ui.models.cards.CardActionItem.CardAction.CancelCard
-import com.kurulabs.mycards.ui.models.cards.CardActionItem.CardAction.CardLimits
-import com.kurulabs.mycards.ui.models.cards.CardActionItem.CardAction.OrderCard
-import com.kurulabs.mycards.ui.models.cards.CardActionItem.CardAction.PinChange
-import com.kurulabs.mycards.ui.models.cards.CardData
-import com.kurulabs.mycards.ui.models.cards.CardType.CREDIT
-import com.kurulabs.mycards.ui.models.cards.CardType.DEBIT
+import com.kurulabs.mycards.ui.cards.models.CardActionItem.CardAction.ActivateCard
+import com.kurulabs.mycards.ui.cards.models.CardActionItem.CardAction.CancelCard
+import com.kurulabs.mycards.ui.cards.models.CardActionItem.CardAction.CardLimits
+import com.kurulabs.mycards.ui.cards.models.CardActionItem.CardAction.OrderCard
+import com.kurulabs.mycards.ui.cards.models.CardActionItem.CardAction.PinChange
+import com.kurulabs.mycards.ui.cards.models.CardData
+import com.kurulabs.mycards.ui.cards.models.CardType.CREDIT
+import com.kurulabs.mycards.ui.cards.models.CardType.DEBIT
 
 private val demoCreditActions = listOf(
     CardLimits,

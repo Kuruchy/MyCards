@@ -1,6 +1,6 @@
 package com.kurulabs.mycards.data.repositories
 
-import com.kurulabs.mycards.ui.models.cards.CardData
+import com.kurulabs.mycards.ui.cards.models.CardData
 import kotlinx.coroutines.flow.Flow
 
 interface CardsRepository {
