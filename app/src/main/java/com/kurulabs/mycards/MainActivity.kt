@@ -11,6 +11,7 @@ import androidx.compose.material.rememberDrawerState
 import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.navigation.compose.rememberNavController
 import com.kurulabs.mycards.ui.cards.state.CardViewModel
 import com.kurulabs.mycards.ui.main.elements.MainScreen
 import com.kurulabs.mycards.ui.theme.MyCardsTheme
@@ -28,8 +29,11 @@ class MainActivity : ComponentActivity() {
             val cardsState by viewModel.cardsState.collectAsState()
             val cardDetailState by viewModel.cardDetailState.collectAsState()
 
+            val navController = rememberNavController()
+
             MyCardsTheme {
                 MainScreen(
+                    navController = navController,
                     scaffoldState = scaffoldState,
                     cardsState = cardsState,
                     cardDetailState = cardDetailState,

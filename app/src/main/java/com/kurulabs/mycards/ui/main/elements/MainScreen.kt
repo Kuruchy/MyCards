@@ -7,10 +7,9 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.navigation.NavController
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import androidx.navigation.compose.rememberNavController
 import com.kurulabs.mycards.data.sources.getDemoCards
 import com.kurulabs.mycards.ui.about.About
 import com.kurulabs.mycards.ui.cards.CardOverview
@@ -20,31 +19,28 @@ import com.kurulabs.mycards.ui.detail.elements.ActionDetail
 import com.kurulabs.mycards.ui.detail.state.CardDetailState
 import com.kurulabs.mycards.ui.errors.ErrorPage
 import com.kurulabs.mycards.ui.main.models.BottomNavigationScreens
-
-private val DEFAULT_SCREEN = BottomNavigationScreens.Home
+import com.kurulabs.mycards.ui.main.models.BottomNavigationScreens.About
+import com.kurulabs.mycards.ui.main.models.BottomNavigationScreens.Home
+import com.kurulabs.mycards.ui.main.models.Screen.Detail
+import com.kurulabs.mycards.ui.main.models.bottomNavigationScreens
 
 @Composable
 fun MainScreen(
+    navController: NavHostController,
     scaffoldState: ScaffoldState,
     cardsState: CardsState,
     cardDetailState: CardDetailState,
     aboutButtonOnClick: () -> Unit,
     onActionClick: (CardActionItem.CardAction, Int) -> Unit
 ) {
-    val navController = rememberNavController()
     var carrouselIndex by remember { mutableStateOf(0) }
-    var selectedScreen: BottomNavigationScreens by remember { mutableStateOf(DEFAULT_SCREEN) }
+    var selectedScreen: BottomNavigationScreens by remember { mutableStateOf(Home) }
 
     Scaffold(
         bottomBar = {
-            val bottomNavigationItems = listOf(
-                BottomNavigationScreens.Home,
-                BottomNavigationScreens.About
-            )
-
             BottomBar(
                 selectedScreen = selectedScreen,
-                items = bottomNavigationItems,
+                items = bottomNavigationScreens,
                 onClick = { screen ->
                     if (selectedScreen != screen) {
                         selectedScreen = screen
@@ -57,9 +53,9 @@ fun MainScreen(
         content = {
             NavHost(
                 navController = navController,
-                startDestination = DEFAULT_SCREEN.route
+                startDestination = Home.route
             ) {
-                composable(BottomNavigationScreens.Home.route) {
+                composable(Home.route) {
                     when {
                         cardsState.isFailure -> ErrorPage()
                         cardsState.isLoading -> CardOverview(
@@ -74,18 +70,18 @@ fun MainScreen(
                             onSwipe = { index -> carrouselIndex = index },
                             onActionClick = { cardAction ->
                                 onActionClick.invoke(cardAction, carrouselIndex)
-                                navController.navigate("Detail")
+                                navController.navigate(Detail.route)
                             }
                         )
                     }
                 }
-                composable("Detail") {
+                composable(Detail.route) {
                     ActionDetail(
                         cardDetailState = cardDetailState,
-                        onBackClick = { navigateUp(navController) }
+                        onBackClick = { navController.navigateUp() }
                     )
                 }
-                composable(BottomNavigationScreens.About.route) {
+                composable(About.route) {
                     About(onClick = aboutButtonOnClick)
                 }
             }
@@ -93,8 +89,4 @@ fun MainScreen(
 
         scaffoldState = scaffoldState
     )
-}
-
-private fun navigateUp(navController: NavController) {
-    navController.navigateUp()
 }
