@@ -2,7 +2,7 @@ package com.kurulabs.mycards.di
 
 import com.kurulabs.mycards.data.repositories.CardsRepository
 import com.kurulabs.mycards.data.repositories.FakeCardsRepository
-import com.kurulabs.mycards.data.sources.CardsLocalDataSource
+import com.kurulabs.mycards.data.sources.FakeCardsRemoteDataSource
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -17,7 +17,7 @@ object RepositoryModule {
     @Provides
     @ViewModelScoped
     fun provideCardsRepository(
-        cardsLocalDataSource: CardsLocalDataSource,
+        cardsLocalDataSource: FakeCardsRemoteDataSource,
         coroutineDispatcher: CoroutineDispatcher
     ): CardsRepository {
         return FakeCardsRepository(cardsLocalDataSource, coroutineDispatcher)
