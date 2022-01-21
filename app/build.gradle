@@ -68,6 +68,8 @@ dependencies {
     androidTestImplementation "androidx.compose.ui:ui-test-junit4:$versions.compose"
     debugImplementation "androidx.compose.ui:ui-tooling:$versions.compose"
 
+    implementation 'com.valentinilk.shimmer:compose-shimmer:1.0.2'
+
     // DI
     implementation "com.google.dagger:hilt-android:$versions.hiltCoreVersion"
     kapt "com.google.dagger:hilt-compiler:$versions.hiltCoreVersion"
