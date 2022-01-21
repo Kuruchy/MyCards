@@ -3,6 +3,7 @@ package com.kurulabs.mycards.ui.composable.cards
 import Action
 import ActionTitle
 import androidx.compose.foundation.layout.BoxWithConstraints
+import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -15,6 +16,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import com.kurulabs.mycards.data.sources.getDemoCards
 import com.kurulabs.mycards.ui.composable.main.BottomNavigationHeight
 import com.kurulabs.mycards.ui.models.cards.CardActionItem
@@ -52,7 +54,9 @@ fun CardOverview(
 
             item {
                 Carrousel(
-                    modifier = Modifier.height(maxHeight * 0.3f),
+                    modifier = Modifier
+                        .defaultMinSize(minHeight = 160.dp)
+                        .height(maxHeight * 0.3f),
                     cards = cardsState.cards,
                     isLoading = cardsState.isLoading,
                     onSwipe = { index ->
