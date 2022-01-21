@@ -29,7 +29,7 @@ private val DEFAULT_SCREEN = BottomNavigationScreens.Home
 fun MainScreen(viewModel: CardViewModel, navigateToGitHub: () -> Unit) {
     val navController = rememberNavController()
     val scaffoldState = rememberScaffoldState(rememberDrawerState(DrawerValue.Closed))
-    var carouselIndex by remember { mutableStateOf(0) }
+    var carrouselIndex by remember { mutableStateOf(0) }
     val cardsState by viewModel.cardsState.collectAsState()
     val cardDetailState by viewModel.cardDetailState.collectAsState()
 
@@ -56,16 +56,18 @@ fun MainScreen(viewModel: CardViewModel, navigateToGitHub: () -> Unit) {
                         cardsState.isFailure -> ErrorPage()
                         cardsState.isLoading -> CardOverview(
                             cardsState = cardsState.copy(cards = getDemoCards()),
+                            carrouselIndex = carrouselIndex,
                             onSwipe = { },
                             onActionClick = { }
                         )
                         else -> CardOverview(
                             cardsState = cardsState,
-                            onSwipe = { index -> carouselIndex = index },
+                            carrouselIndex = carrouselIndex,
+                            onSwipe = { index -> carrouselIndex = index },
                             onActionClick = { cardAction ->
                                 viewModel.cardDetailState.update {
                                     it.copy(
-                                        cardData = cardsState.cards[carouselIndex],
+                                        cardData = cardsState.cards[carrouselIndex],
                                         cardAction = cardAction
                                     )
                                 }

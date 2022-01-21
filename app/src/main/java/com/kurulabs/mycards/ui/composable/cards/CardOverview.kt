@@ -29,6 +29,7 @@ fun CardOverviewPreview() {
     MyCardsTheme {
         CardOverview(
             cardsState = CardsState(cards = getDemoCards()),
+            carrouselIndex = 0,
             onSwipe = {},
             onActionClick = {}
         )
@@ -38,11 +39,10 @@ fun CardOverviewPreview() {
 @Composable
 fun CardOverview(
     cardsState: CardsState,
+    carrouselIndex: Int,
     onSwipe: (Int) -> Unit,
     onActionClick: (CardActionItem.CardAction) -> Unit
 ) {
-    var carouselIndex by remember { mutableStateOf(0) }
-
     BoxWithConstraints {
         val maxHeight = maxHeight
         LazyColumn(
@@ -50,7 +50,7 @@ fun CardOverview(
                 .fillMaxSize()
                 .padding(bottom = BottomNavigationHeight),
         ) {
-            val actions = cardsState.cards.getOrNull(carouselIndex)?.actions ?: emptyList()
+            val actions = cardsState.cards.getOrNull(carrouselIndex)?.actions ?: emptyList()
 
             item {
                 Carrousel(
@@ -60,7 +60,6 @@ fun CardOverview(
                     cards = cardsState.cards,
                     isLoading = cardsState.isLoading,
                     onSwipe = { index ->
-                        carouselIndex = index
                         onSwipe.invoke(index)
                     }
                 )
