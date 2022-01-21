@@ -1,11 +1,8 @@
 package com.kurulabs.mycards.ui.main.elements
 
-import androidx.compose.material.DrawerValue
 import androidx.compose.material.Scaffold
-import androidx.compose.material.rememberDrawerState
-import androidx.compose.material.rememberScaffoldState
+import androidx.compose.material.ScaffoldState
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -17,20 +14,23 @@ import androidx.navigation.compose.rememberNavController
 import com.kurulabs.mycards.data.sources.getDemoCards
 import com.kurulabs.mycards.ui.about.About
 import com.kurulabs.mycards.ui.cards.CardOverview
-import com.kurulabs.mycards.ui.cards.state.CardViewModel
+import com.kurulabs.mycards.ui.cards.models.CardActionItem
+import com.kurulabs.mycards.ui.cards.state.CardsState
 import com.kurulabs.mycards.ui.detail.elements.ActionDetail
+import com.kurulabs.mycards.ui.detail.state.CardDetailState
 import com.kurulabs.mycards.ui.errors.ErrorPage
 import com.kurulabs.mycards.ui.main.models.BottomNavigationScreens
-import kotlinx.coroutines.flow.update
 
 private val DEFAULT_SCREEN = BottomNavigationScreens.Home
 
 @Composable
-fun MainScreen(viewModel: CardViewModel, navigateToGitHub: () -> Unit) {
-    val scaffoldState = rememberScaffoldState(rememberDrawerState(DrawerValue.Closed))
-    val cardsState by viewModel.cardsState.collectAsState()
-    val cardDetailState by viewModel.cardDetailState.collectAsState()
-
+fun MainScreen(
+    scaffoldState: ScaffoldState,
+    cardsState: CardsState,
+    cardDetailState: CardDetailState,
+    aboutButtonOnClick: () -> Unit,
+    onActionClick: (CardActionItem.CardAction, Int) -> Unit
+) {
     val navController = rememberNavController()
     var carrouselIndex by remember { mutableStateOf(0) }
     var selectedScreen: BottomNavigationScreens by remember { mutableStateOf(DEFAULT_SCREEN) }
@@ -73,12 +73,7 @@ fun MainScreen(viewModel: CardViewModel, navigateToGitHub: () -> Unit) {
                             carrouselIndex = carrouselIndex,
                             onSwipe = { index -> carrouselIndex = index },
                             onActionClick = { cardAction ->
-                                viewModel.cardDetailState.update {
-                                    it.copy(
-                                        cardData = cardsState.cards[carrouselIndex],
-                                        cardAction = cardAction
-                                    )
-                                }
+                                onActionClick.invoke(cardAction, carrouselIndex)
                                 navController.navigate("Detail")
                             }
                         )
@@ -91,7 +86,7 @@ fun MainScreen(viewModel: CardViewModel, navigateToGitHub: () -> Unit) {
                     )
                 }
                 composable(BottomNavigationScreens.About.route) {
-                    About(onClick = navigateToGitHub)
+                    About(onClick = aboutButtonOnClick)
                 }
             }
         },
