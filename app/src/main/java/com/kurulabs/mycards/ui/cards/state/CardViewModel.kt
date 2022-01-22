@@ -3,6 +3,7 @@ package com.kurulabs.mycards.ui.cards.state
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.kurulabs.mycards.data.repositories.CardsRepository
+import com.kurulabs.mycards.ui.cards.models.CardActionItem
 import com.kurulabs.mycards.ui.detail.state.CardDetailState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.async
@@ -58,4 +59,12 @@ class CardViewModel @Inject constructor(
             }
         }
     }
+
+    fun onActionClicked(cardAction: CardActionItem.CardAction, index: Int) =
+        cardDetailState.update { state ->
+            state.copy(
+                cardData = cardsState.value.cards[index],
+                cardAction = cardAction
+            )
+        }
 }

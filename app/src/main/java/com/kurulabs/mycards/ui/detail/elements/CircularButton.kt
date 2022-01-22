@@ -1,4 +1,4 @@
-package com.kurulabs.mycards.ui.detail
+package com.kurulabs.mycards.ui.detail.elements
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box

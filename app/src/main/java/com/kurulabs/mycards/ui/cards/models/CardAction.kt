@@ -13,9 +13,7 @@ sealed class CardActionItem {
     ) : CardActionItem() {
 
         object PayGroupTitle : GroupTitle(index = 0, title = "Payment")
-
         object CardGroupTitle : GroupTitle(index = 1, title = "Card Management")
-
         object PinGroupTitle : GroupTitle(index = 2, title = "PIN Management")
     }
 

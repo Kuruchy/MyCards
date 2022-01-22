@@ -20,10 +20,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.kurulabs.mycards.data.sources.getDemoCards
-import com.kurulabs.mycards.ui.cards.BankCard
+import com.kurulabs.mycards.ui.cards.elements.BankCard
 import com.kurulabs.mycards.ui.cards.models.PressToInteract
 import com.kurulabs.mycards.ui.cards.models.SwipeToInteract
-import com.kurulabs.mycards.ui.detail.CircularButton
 import com.kurulabs.mycards.ui.detail.state.CardDetailState
 import com.kurulabs.mycards.ui.theme.MyCardsTheme
 import com.kurulabs.mycards.ui.theme.Orange

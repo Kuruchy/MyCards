@@ -13,7 +13,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.kurulabs.mycards.data.sources.getDemoCards
 import com.kurulabs.mycards.ui.about.About
-import com.kurulabs.mycards.ui.cards.CardOverview
+import com.kurulabs.mycards.ui.cards.elements.CardOverview
 import com.kurulabs.mycards.ui.cards.models.CardActionItem
 import com.kurulabs.mycards.ui.cards.state.CardsState
 import com.kurulabs.mycards.ui.detail.elements.ActionDetail

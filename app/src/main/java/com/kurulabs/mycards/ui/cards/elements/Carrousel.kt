@@ -1,4 +1,4 @@
-package com.kurulabs.mycards.ui.cards
+package com.kurulabs.mycards.ui.cards.elements
 
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
@@ -14,8 +14,8 @@ import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.HorizontalPagerIndicator
 import com.google.accompanist.pager.rememberPagerState
-import com.kurulabs.mycards.ui.utils.shimmer
 import com.kurulabs.mycards.ui.cards.models.CardData
+import com.kurulabs.mycards.ui.utils.shimmer
 
 
 @OptIn(ExperimentalPagerApi::class)

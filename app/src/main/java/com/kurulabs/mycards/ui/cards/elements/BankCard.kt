@@ -1,4 +1,4 @@
-package com.kurulabs.mycards.ui.cards
+package com.kurulabs.mycards.ui.cards.elements
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.BoxWithConstraints

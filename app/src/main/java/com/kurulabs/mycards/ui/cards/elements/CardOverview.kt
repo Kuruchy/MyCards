@@ -1,4 +1,4 @@
-package com.kurulabs.mycards.ui.cards
+package com.kurulabs.mycards.ui.cards.elements
 
 import Action
 import ActionTitle

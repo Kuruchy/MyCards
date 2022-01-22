@@ -16,7 +16,6 @@ import com.kurulabs.mycards.ui.cards.state.CardViewModel
 import com.kurulabs.mycards.ui.main.elements.MainScreen
 import com.kurulabs.mycards.ui.theme.MyCardsTheme
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.update
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
@@ -28,7 +27,6 @@ class MainActivity : ComponentActivity() {
             val scaffoldState = rememberScaffoldState(rememberDrawerState(DrawerValue.Closed))
             val cardsState by viewModel.cardsState.collectAsState()
             val cardDetailState by viewModel.cardDetailState.collectAsState()
-
             val navController = rememberNavController()
 
             MyCardsTheme {
@@ -38,14 +36,7 @@ class MainActivity : ComponentActivity() {
                     cardsState = cardsState,
                     cardDetailState = cardDetailState,
                     aboutButtonOnClick = ::navigateToGitHub,
-                    onActionClick = { cardAction, index ->
-                        viewModel.cardDetailState.update {
-                            it.copy(
-                                cardData = cardsState.cards[index],
-                                cardAction = cardAction
-                            )
-                        }
-                    }
+                    onActionClick = { cardAction, index -> viewModel.onActionClicked(cardAction, index)}
                 )
             }
         }
