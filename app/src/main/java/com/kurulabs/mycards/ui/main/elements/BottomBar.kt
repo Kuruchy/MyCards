@@ -13,6 +13,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavBackStackEntry
 import com.kurulabs.mycards.ui.main.models.BottomNavigationScreens
 import com.kurulabs.mycards.ui.theme.Orange
 
@@ -21,14 +22,16 @@ val BottomNavigationHeight = 56.dp
 @Composable
 fun BottomBar(
     items: List<BottomNavigationScreens>,
-    selectedScreen: BottomNavigationScreens,
-    onClick: (BottomNavigationScreens) -> Unit,
+    navBackStackEntry: NavBackStackEntry?,
+    onClick: (String) -> Unit,
 ) {
     BottomNavigation(
         backgroundColor = Orange
     ) {
+        val currentRoute = navBackStackEntry?.destination?.route
+
         items.forEach { screen ->
-            val isSelected = selectedScreen == screen
+            val isSelected = currentRoute == screen.route
 
             BottomNavigationItem(
                 modifier = Modifier.background(color = MaterialTheme.colors.background),
@@ -50,7 +53,7 @@ fun BottomBar(
                 selectedContentColor = Orange,
                 unselectedContentColor = MaterialTheme.colors.onBackground.copy(0.3f),
                 alwaysShowLabel = true,
-                onClick = { onClick.invoke(screen) }
+                onClick = { onClick.invoke(screen.route) }
             )
         }
     }

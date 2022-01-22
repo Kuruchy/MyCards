@@ -10,6 +10,7 @@ import androidx.compose.runtime.setValue
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.compose.currentBackStackEntryAsState
 import com.kurulabs.mycards.data.sources.getDemoCards
 import com.kurulabs.mycards.ui.about.About
 import com.kurulabs.mycards.ui.cards.CardOverview
@@ -18,7 +19,6 @@ import com.kurulabs.mycards.ui.cards.state.CardsState
 import com.kurulabs.mycards.ui.detail.elements.ActionDetail
 import com.kurulabs.mycards.ui.detail.state.CardDetailState
 import com.kurulabs.mycards.ui.errors.ErrorPage
-import com.kurulabs.mycards.ui.main.models.BottomNavigationScreens
 import com.kurulabs.mycards.ui.main.models.BottomNavigationScreens.About
 import com.kurulabs.mycards.ui.main.models.BottomNavigationScreens.Home
 import com.kurulabs.mycards.ui.main.models.Screen.Detail
@@ -34,17 +34,22 @@ fun MainScreen(
     onActionClick: (CardActionItem.CardAction, Int) -> Unit
 ) {
     var carrouselIndex by remember { mutableStateOf(0) }
-    var selectedScreen: BottomNavigationScreens by remember { mutableStateOf(Home) }
+    val navBackStackEntry by navController.currentBackStackEntryAsState()
 
     Scaffold(
         bottomBar = {
             BottomBar(
-                selectedScreen = selectedScreen,
+                navBackStackEntry = navBackStackEntry,
                 items = bottomNavigationScreens,
-                onClick = { screen ->
-                    if (selectedScreen != screen) {
-                        selectedScreen = screen
-                        navController.navigate(screen.route)
+                onClick = { route ->
+                    navController.navigate(route) {
+                        navController.graph.startDestinationRoute?.let { route ->
+                            popUpTo(route) {
+                                saveState = true
+                            }
+                        }
+                        launchSingleTop = true
+                        restoreState = true
                     }
                 }
             )
