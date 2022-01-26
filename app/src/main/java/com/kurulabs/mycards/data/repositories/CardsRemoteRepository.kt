@@ -21,6 +21,12 @@ class CardsRemoteRepository @Inject constructor(
     override fun observableCards(): Flow<Set<CardData>> = cards
 
     override suspend fun getAllCards(): List<CardData> = withContext(ioDispatcher) {
-        cardsMapper.map(cardsRemoteDataSource.fetchAllCards())
+        val cardData = cardsRemoteDataSource.fetchAllCards()
+        val bankData = cardsRemoteDataSource.fetchAllBanks()
+
+        cardsMapper.map(
+            cardData,
+            bankData
+        )
     }
 }

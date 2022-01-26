@@ -1,5 +1,6 @@
 package com.kurulabs.mycards.data.repositories
 
+import com.kurulabs.mycards.data.models.BankDataApi
 import com.kurulabs.mycards.data.models.CardDataApi
 import com.kurulabs.mycards.data.sources.actionList
 import com.kurulabs.mycards.data.sources.names
@@ -9,13 +10,13 @@ import com.kurulabs.mycards.ui.cards.models.CardType
 import kotlin.random.Random
 
 class CardsMapperImpl : CardsMapper {
-    override fun map(usersData: List<CardDataApi>): List<CardData> {
-        return usersData.map {
+    override fun map(usersData: List<CardDataApi>, bankData: List<BankDataApi>): List<CardData> {
+        return usersData.mapIndexed { index, cardDataApi ->
             CardData(
-                bankName = it.name,
+                bankName = bankData[index].entity,
                 typeName = getCardType(),
-                number = it.cardFormatted,
-                validDate = it.expirationDate,
+                number = cardDataApi.cardFormatted,
+                validDate = cardDataApi.expirationDate,
                 owner = getDemoName(),
                 actions = getCardActions()
             )
