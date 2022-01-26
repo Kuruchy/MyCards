@@ -14,7 +14,7 @@ ext.versions = [
         lifecyleRuntime  : '2.3.1',
 
         // Coroutines
-        coroutines : '1.5.2',
+        coroutines       : '1.5.2',
 
         // Compose
         compose          : '1.0.1',
@@ -25,7 +25,11 @@ ext.versions = [
         // Navigation
         navigationRuntime: '2.3.5',
 
+        // network
+        retrofit         : '2.9.0',
+        okhttp           : '4.7.2',
+
         // DI
-        hiltCoreVersion      : '2.40.5',
-        hiltVersion          : '1.0.0',
+        hiltCoreVersion  : '2.40.5',
+        hiltVersion      : '1.0.0',
 ]

@@ -43,11 +43,11 @@ class CardViewModel @Inject constructor(
             val cardsResult =
                 withContext(coroutineDispatcher) { cardsRepository.getAllCards() }
 
-            if (cardsResult.isSuccess) {
+            if (cardsResult.isNotEmpty()) {
                 cardsState.update {
                     it.copy(
                         isLoading = false,
-                        cards = cardsResult.getOrNull().orEmpty()
+                        cards = cardsResult
                     )
                 }
             } else {

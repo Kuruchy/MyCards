@@ -1,7 +1,7 @@
 package com.kurulabs.mycards.data.sources
 
-import com.kurulabs.mycards.ui.cards.models.CardData
+import com.kurulabs.mycards.data.models.CardDataApi
 
 interface CardsDataSource {
-    suspend fun getAllCards(): Result<List<CardData>>
+    suspend fun fetchAllCards(): List<CardDataApi>
 }

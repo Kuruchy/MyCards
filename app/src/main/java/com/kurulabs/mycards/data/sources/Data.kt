@@ -9,6 +9,22 @@ import com.kurulabs.mycards.ui.cards.models.CardData
 import com.kurulabs.mycards.ui.cards.models.CardType.CREDIT
 import com.kurulabs.mycards.ui.cards.models.CardType.DEBIT
 
+val actionList by lazy {
+    listOf(
+        demoCreditActions,
+        demoInactiveCreditActions,
+        demoDebitActions
+    )
+}
+
+val names by lazy {
+    listOf(
+        "Gandalf the Gray",
+        "Gandalf the White",
+        "Saruman the White",
+    )
+}
+
 private val demoCreditActions = listOf(
     CardLimits,
     OrderCard,

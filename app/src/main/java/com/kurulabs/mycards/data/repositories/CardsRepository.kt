@@ -5,5 +5,5 @@ import kotlinx.coroutines.flow.Flow
 
 interface CardsRepository {
     fun observableCards(): Flow<Set<CardData>>
-    suspend fun getAllCards(): Result<List<CardData>>
+    suspend fun getAllCards(): List<CardData>
 }
