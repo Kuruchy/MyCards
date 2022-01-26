@@ -2,6 +2,9 @@ package com.kurulabs.mycards.data.sources
 
 import com.kurulabs.mycards.data.models.BankDataApi
 import com.kurulabs.mycards.data.models.CardDataApi
+import com.kurulabs.mycards.data.models.UserDataApi
+import com.skydoves.sandwich.onError
+import com.skydoves.sandwich.onException
 import com.skydoves.sandwich.onSuccess
 import javax.inject.Inject
 
@@ -14,6 +17,8 @@ class CardsRemoteDataSource @Inject constructor(
 
         cardsApi.fetchCardData().onSuccess {
             list = this.data
+        }.onException {
+        }.onError {
         }
 
         return list
@@ -24,6 +29,20 @@ class CardsRemoteDataSource @Inject constructor(
 
         cardsApi.fetchBankData().onSuccess {
             list = this.data
+        }.onException {
+        }.onError {
+        }
+
+        return list
+    }
+
+    override suspend fun fetchAllUsers(): List<UserDataApi> {
+        var list = emptyList<UserDataApi>()
+
+        cardsApi.fetchUserData().onSuccess {
+            list = this.data
+        }.onException {
+        }.onError {
         }
 
         return list

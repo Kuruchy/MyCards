@@ -17,14 +17,6 @@ val actionList by lazy {
     )
 }
 
-val names by lazy {
-    listOf(
-        "Gandalf the Gray",
-        "Gandalf the White",
-        "Saruman the White",
-    )
-}
-
 private val demoCreditActions = listOf(
     CardLimits,
     OrderCard,

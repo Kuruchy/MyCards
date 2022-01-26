@@ -23,10 +23,12 @@ class CardsRemoteRepository @Inject constructor(
     override suspend fun getAllCards(): List<CardData> = withContext(ioDispatcher) {
         val cardData = cardsRemoteDataSource.fetchAllCards()
         val bankData = cardsRemoteDataSource.fetchAllBanks()
+        val userData = cardsRemoteDataSource.fetchAllUsers()
 
         cardsMapper.map(
             cardData,
-            bankData
+            bankData,
+            userData
         )
     }
 }
