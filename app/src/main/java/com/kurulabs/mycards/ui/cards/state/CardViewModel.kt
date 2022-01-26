@@ -6,15 +6,17 @@ import com.kurulabs.mycards.data.repositories.CardsRepository
 import com.kurulabs.mycards.ui.cards.models.CardActionItem
 import com.kurulabs.mycards.ui.detail.state.CardDetailState
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.async
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @HiltViewModel
 class CardViewModel @Inject constructor(
+    private val coroutineDispatcher: CoroutineDispatcher,
     private val cardsRepository: CardsRepository
 ) : ViewModel() {
 
@@ -38,9 +40,8 @@ class CardViewModel @Inject constructor(
         cardsState.update { it.copy(isLoading = true) }
 
         viewModelScope.launch {
-            val cardsDeferred = async { cardsRepository.getAllCards() }
-
-            val cardsResult = cardsDeferred.await()
+            val cardsResult =
+                withContext(coroutineDispatcher) { cardsRepository.getAllCards() }
 
             if (cardsResult.isSuccess) {
                 cardsState.update {
