@@ -18,7 +18,9 @@ class CardsRemoteDataSource @Inject constructor(
         cardsApi.fetchCardData().onSuccess {
             list = this.data
         }.onException {
+            val ex = this.exception
         }.onError {
+            val err = this.statusCode.code
         }
 
         return list
@@ -36,15 +38,5 @@ class CardsRemoteDataSource @Inject constructor(
         return list
     }
 
-    override suspend fun fetchAllUsers(): List<UserDataApi> {
-        var list = emptyList<UserDataApi>()
-
-        cardsApi.fetchUserData().onSuccess {
-            list = this.data
-        }.onException {
-        }.onError {
-        }
-
-        return list
-    }
+    override suspend fun fetchAllUsers(): List<UserDataApi> = demoUsers
 }

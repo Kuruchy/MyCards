@@ -1,5 +1,6 @@
 package com.kurulabs.mycards.data.sources
 
+import com.kurulabs.mycards.data.models.UserDataApi
 import com.kurulabs.mycards.ui.cards.models.CardActionItem.CardAction.ActivateCard
 import com.kurulabs.mycards.ui.cards.models.CardActionItem.CardAction.CancelCard
 import com.kurulabs.mycards.ui.cards.models.CardActionItem.CardAction.CardLimits
@@ -65,4 +66,12 @@ fun getDemoCards(): List<CardData> = listOf(
     demoCreditCard,
     demoDebitCard,
     demoInactiveCreditCard,
+)
+
+val demoUsers = listOf(
+    UserDataApi("John Smith"),
+    UserDataApi("Max Musterman"),
+    UserDataApi("Carolina Saez Piñeiro"),
+    UserDataApi("Juan Jesus Mora Valenzuela"),
+    UserDataApi("Serafin Alonso Singh"),
 )

@@ -5,14 +5,15 @@ import com.kurulabs.mycards.data.models.CardDataApi
 import com.kurulabs.mycards.data.models.UserDataApi
 import com.skydoves.sandwich.ApiResponse
 import retrofit2.http.GET
+import retrofit2.http.Query
 
 interface CardsApi {
-    @GET("/bank/card?results=5")
-    suspend fun fetchCardData(): ApiResponse<List<CardDataApi>>
+    @GET("/bank/card")
+    suspend fun fetchCardData(@Query("results") results: Int = 5): ApiResponse<List<CardDataApi>>
 
-    @GET("/bank/account?results=5&include_fields=entity")
-    suspend fun fetchBankData(): ApiResponse<List<BankDataApi>>
-
-    @GET("/profiles/person?results=5&include_fields=fullname")
-    suspend fun fetchUserData(): ApiResponse<List<UserDataApi>>
+    @GET("/bank/account")
+    suspend fun fetchBankData(
+        @Query("results") results: Int = 5,
+        @Query("include_fields") includeFields: String = "entity"
+    ): ApiResponse<List<BankDataApi>>
 }
